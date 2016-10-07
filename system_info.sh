@@ -19,4 +19,13 @@ function show_menu(){
     echo "  Main Menu   "
     echo ""
         echo "1. OS Info" 
+}
+
+# Display header message 
+# $1 - message 
+function write_header(){
+    local h="$@"
+    echo ""
+    echo "  ${h}    "
+    echo ""
 } 
