@@ -28,4 +28,13 @@ function write_header(){
     echo ""
     echo "  ${h}    "
     echo ""
+}
+
+# Get info about OS 
+function  os_info(){
+    write_header "System Information"
+    echo "Operating System : $(uname)"
+    [ -x $LSB ] && $LSB -a || echo "$LSB command is not installed (set \$LSB variable)"
+    # pause "Press [Enter] key to continue..."
+    pause 
 } 
