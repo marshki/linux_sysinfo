@@ -18,7 +18,7 @@ function show_menu(){
     echo ""
     echo "  Main Menu   "
     echo ""
-        echo "1. OS Info" 
+        echo "1. OS Info ;;" 
 }
 
 # Display header message 
@@ -37,4 +37,15 @@ function  os_info(){
     [ -x $LSB ] && $LSB -a || echo "$LSB command is not installed (set \$LSB variable)"
     # pause "Press [Enter] key to continue..."
     pause 
-} 
+}
+
+# Ignore CTRL+C, CTRL+Z and quit singles using the trap 
+trap '' SIGINT SIGQUIT SIGTSTP
+
+# Main logic 
+while true 
+do 
+    clear 
+    show_menu   # Display menu
+    read_input  # Wait for user input
+done 
