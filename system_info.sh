@@ -10,4 +10,13 @@ function pause(){
     local message="$@"
     [ -z $message ] && message="Press [Enter] key to continue..."
     read -p "$message" readEnterKey
+}
+
+# Display on-screen menu
+function show_menu(){
+    date
+    echo ""
+    echo "  Main Menu   "
+    echo ""
+        echo "1. OS Info" 
 } 
