@@ -39,6 +39,18 @@ function  os_info(){
     pause 
 }
 
+# Get input via the keyboard and make a decision using case..esac 
+function read_input(){
+    local c
+    read -p "Enter your choice [ 1 ] " c
+    case $c in
+        1) os_info ;;
+        *)
+            echo "Please select between 1 and ..."
+            pause
+    esac 
+}
+
 # Ignore CTRL+C, CTRL+Z and quit singles using the trap 
 trap '' SIGINT SIGQUIT SIGTSTP
 
