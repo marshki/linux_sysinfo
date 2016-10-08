@@ -15,9 +15,9 @@ function pause(){
 # Display on-screen menu
 function show_menu(){
     date
-    echo ""
+    echo "--------------------------"
     echo "      Main Menu"
-    echo ""
+    echo "--------------------------"
         echo "  1. OS Info" 
         echo "  2. Exit " 
 }
@@ -26,9 +26,9 @@ function show_menu(){
 # $1 - message 
 function write_header(){
     local h="$@"
-    echo ""
-    echo "  ${h}    "
-    echo ""
+    echo "--------------------------"
+    echo "  ${h}"
+    echo "--------------------------"
 }
 
 # Get info about Operating System 
