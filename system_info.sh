@@ -48,7 +48,7 @@ function host_info(){
     echo "DNS Domain : $(hostname -d)"
     echo "Fully-qualified Domain Name (FQDN) : $(hostname -f)"
     echo "Network Address (IP) : $(hostname -i)"
-    echo "DNS name servers (DNS IP) : ${dnsips}
+    echo "DNS name servers (DNS IP) : ${dnsips}"
     pause
 }
 
@@ -60,7 +60,7 @@ function read_input(){
         1) os_info ;;
         2) echo "Ciao!"; exit 0 ;;
         *)
-            echo "Please select between 1 and 2"
+            echo "Please select between 1 and 2."
             pause
     esac 
 }
