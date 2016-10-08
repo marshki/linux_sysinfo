@@ -33,11 +33,23 @@ function write_header(){
 
 # Get info about Operating System 
 function  os_info(){
-    write_header "  System Information"
+    write_header "  System Info"
     echo "Operating System : $(uname)"
     [ -x $LSB ] && $LSB -a || echo "$LSB command is not installed (set \$LSB variable)"
     # pause "Press [Enter] key to continue..."
     pause 
+}
+
+# Get info about Host(DNS, IP, Hotname)
+function host_info(){
+    local dnsips=$(sed -e '/^$/d' /etc/resolv.conf |awk '{if (tolower($1)=="nameserver") print $2}')
+    write_header "  Hostname and DNS Info"
+    echo "Hostname : $(hostname -s)"
+    echo "DNS Domain : $(hostname -d)"
+    echo "Fully-qualified Domain Name (FQDN) : $(hostname -f)"
+    echo "Network Address (IP) : $(hostname -i)"
+    echo "DNS name servers (DNS IP) : ${dnsips}
+    pause
 }
 
 # Get input via the keyboard and make a decision using case..esac 
