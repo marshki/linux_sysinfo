@@ -8,7 +8,7 @@ LSB=/usr/bin/lsb_release
 # $1-> Message (optional)
 function pause(){
     local message="$@"
-    [ -z $message ] && message="Press [Enter] key to continue."
+    [ -z $message ] && message="Press [Enter] key to continue:  "
     read -p "$message" readEnterKey
 }
 
@@ -20,7 +20,7 @@ function show_menu(){
     echo "--------------------------"
         echo "  1. OS Info" 
         echo "  2. Hostname and DNS Info"
-        echo "  E. Exit " 
+        echo "  E. Exit" 
 }
 
 # Display header message 
@@ -51,6 +51,28 @@ function host_info(){
     echo "Network Address (IP) : $(hostname -i)"
     echo "DNS name servers (DNS IP) : ${dnsips}"
     pause
+}
+
+# Get info about Network Interface and Routing 
+function net_info(){
+    devices=$(netstat -i | cut -d" " -f1 | egrep -v "Kernel|Iface|lo"
+    write_header "  Network Info"
+    echo "Total network interfaces found : $(wc -w <<<${devices})"
+    
+    echo "*** IP Addresses Info ***"
+    ip -4 address show 
+
+    echo "**************************"
+    echo "**** Network Routing  ****"
+    echo "**************************"
+    netstat -nr 
+
+    echo "**************************"
+    echo "* Interface traffic Info *"
+    echo "**************************"
+    netstat -i 
+
+    pause 
 }
 
 # Get input via the keyboard and make a decision using case..esac 
