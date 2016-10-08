@@ -19,7 +19,8 @@ function show_menu(){
     echo "      Main Menu"
     echo "--------------------------"
         echo "  1. OS Info" 
-        echo "  2. Exit " 
+        echo "  2. Hostname and DNS Info"
+        echo "  E. Exit " 
 }
 
 # Display header message 
@@ -58,9 +59,10 @@ function read_input(){
     read -p "Enter your choice [ 1-2 ] " c
     case $c in
         1) os_info ;;
-        2) echo "Ciao!"; exit 0 ;;
+        2) host_info ;;
+        E) echo "Ciao!"; exit 0 ;;
         *)
-            echo "Please select between 1 and 2."
+            echo "Please select between 1 and E."
             pause
     esac 
 }
