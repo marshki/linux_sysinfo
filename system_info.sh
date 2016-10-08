@@ -18,7 +18,8 @@ function show_menu(){
     echo ""
     echo "  Main Menu   "
     echo ""
-        echo "1. OS Info ;;" 
+        echo "1. OS Info" 
+        echo "2. Exit " 
 }
 
 # Display header message 
@@ -42,11 +43,12 @@ function  os_info(){
 # Get input via the keyboard and make a decision using case..esac 
 function read_input(){
     local c
-    read -p "Enter your choice [ 1 ] " c
+    read -p "Enter your choice [ 1-2 ] " c
     case $c in
         1) os_info ;;
+        2) echo "Ciao!"; exit 0 ;;
         *)
-            echo "Please select between 1 and ..."
+            echo "Please select between 1 and 2"
             pause
     esac 
 }
