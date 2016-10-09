@@ -1,3 +1,3 @@
-# bash_sys_info
+# Bash System Info  
 
 - [X] Rachel laid an egg! PU!
