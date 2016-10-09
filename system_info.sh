@@ -23,7 +23,8 @@ function show_menu(){
         echo "  3. Network Info"
         echo "  4. Who is Online"
         echo "  5. Last Logged in Users"
-        echo "  E. Exit" 
+        echo "  6. Free & Used Memory Info"
+        echo "  7. Exit" 
 }
 
 # Display header message 
