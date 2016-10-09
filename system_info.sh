@@ -2,10 +2,12 @@
 # This script allows you to extract useful information from a *NIX host using a menu-driven interface. 
 
 # Define variables 
+
 LSB=/usr/bin/lsb_release 
 
 # Display pause prompt
 # $1-> Message (optional)
+
 function pause(){
     local message="$@"
     [ -z $message ] && message="Press [Enter] key to continue:  "
@@ -13,6 +15,7 @@ function pause(){
 }
 
 # Display on-screen menu
+
 function show_menu(){
     date
     echo "--------------------------"
@@ -29,6 +32,7 @@ function show_menu(){
 
 # Display header message 
 # $1 - message 
+
 function write_header(){
     local h="$@"
     echo "--------------------------"
@@ -37,6 +41,7 @@ function write_header(){
 }
 
 # Get info about Operating System 
+
 function  os_info(){
     write_header "  System Info"
     echo "Operating System : $(uname)"
@@ -46,6 +51,7 @@ function  os_info(){
 }
 
 # Get info about Host(DNS, IP, Hotname)
+
 function host_info(){
     local dnsips=$(sed -e '/^$/d' /etc/resolv.conf |awk '{if (tolower($1)=="nameserver") print $2}')
     write_header "  Hostname and DNS Info"
@@ -58,6 +64,7 @@ function host_info(){
 }
 
 # Get info about Network Interface and Routing 
+
 function net_info(){
     devices=$(netstat -i | cut -d" " -f1 | egrep -v "Kernel|Iface|lo")
     write_header "  Network Info"
@@ -89,7 +96,25 @@ function user_info(){
     esac
 }
 
+# Display used and free memory info 
+
+function men_info(){
+        write_header "Free & Used Memory "
+        free -m 
+
+    echo "**************************"
+        echo "*** Virtual Memory Statistics ***"
+    echo "**************************"
+        vmstat
+echo "**************************"
+        echo "*** Top 5 Memory Eating Process ***"
+echo "**************************"
+        ps auxf | sort -nr -k 4 | head -5 
+        pause
+}
+
 # Get input via the keyboard and make a decision using case..esac 
+
 function read_input(){
     local c
     read -p "Enter your choice [ 1-7 ] " c
@@ -108,9 +133,11 @@ function read_input(){
 }
 
 # Ignore CTRL+C, CTRL+Z and quit singles using the trap 
+
 trap '' SIGINT SIGQUIT SIGTSTP
 
 # Main logic 
+
 while true 
 do 
     clear 
