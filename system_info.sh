@@ -98,7 +98,7 @@ function user_info(){
 
 # Display used and free memory info 
 
-function men_info(){
+function mem_info(){
         write_header "Free & Used Memory "
         free -m 
 
@@ -125,7 +125,7 @@ function read_input(){
         4) user_info "who" ;;
         5) user_info "last" ;;
         6) mem_info ;;
-        E) echo "Ciao!"; exit 0 ;;
+        7) echo "Ciao!"; exit 0 ;;
         *)
             echo "Please select between 1 to 7:  "
             pause
