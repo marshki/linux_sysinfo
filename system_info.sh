@@ -19,7 +19,10 @@ function show_menu(){
     echo "      Main Menu"
     echo "--------------------------"
         echo "  1. OS Info" 
-        echo "  2. Hostname and DNS Info"
+        echo "  2. Hostname & DNS Info"
+        echo "  3. Network Info"
+        echo "  4. Who is Online"
+        echo "  5. Last Logged in Users"
         echo "  E. Exit" 
 }
 
@@ -55,7 +58,7 @@ function host_info(){
 
 # Get info about Network Interface and Routing 
 function net_info(){
-    devices=$(netstat -i | cut -d" " -f1 | egrep -v "Kernel|Iface|lo"
+    devices=$(netstat -i | cut -d" " -f1 | egrep -v "Kernel|Iface|lo")
     write_header "  Network Info"
     echo "Total network interfaces found : $(wc -w <<<${devices})"
     
@@ -88,13 +91,16 @@ function user_info(){
 # Get input via the keyboard and make a decision using case..esac 
 function read_input(){
     local c
-    read -p "Enter your choice [ 1-2 ] " c
+    read -p "Enter your choice [ 1-n ] " c
     case $c in
         1) os_info ;;
         2) host_info ;;
+        3) net_info ;; 
+        4) user_info "who" ;;
+        5) user_info "last" ;;
         E) echo "Ciao!"; exit 0 ;;
         *)
-            echo "Please select between 1 and E."
+            echo "Please select between 1 and n."
             pause
     esac 
 }
