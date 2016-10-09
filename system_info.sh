@@ -92,16 +92,17 @@ function user_info(){
 # Get input via the keyboard and make a decision using case..esac 
 function read_input(){
     local c
-    read -p "Enter your choice [ 1-n ] " c
+    read -p "Enter your choice [ 1-7 ] " c
     case $c in
         1) os_info ;;
         2) host_info ;;
         3) net_info ;; 
         4) user_info "who" ;;
         5) user_info "last" ;;
+        6) mem_info ;;
         E) echo "Ciao!"; exit 0 ;;
         *)
-            echo "Please select between 1 and n."
+            echo "Please select between 1 to 7:  "
             pause
     esac 
 }
