@@ -1,12 +1,14 @@
 # Bash System Info  
 
 Bash script to extract useful information from a `*NIX` host using a menu-driven interface.
+Ideally, this script should run in Centos 7, Debian 8, Mac OS X (11), & 
 
 # TODO
 
-- [ ] Get to work with Mac OS X. 
-- [ ] Fix mem_info function (TMI)
-- [ ] Test in Centos7
+- [ ] Test on Centos 7, Debian 8, Ubuntu 16.04, and Mac OSX 11
+- [ ] Fix mem_info badness in Ubuntu (TMI) 
+- [ ] Fix os_info in Centos 7 
+- [ ] Defeat more badness as it comes up
 
 # History 
 
