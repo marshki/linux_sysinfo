@@ -117,7 +117,7 @@ echo "**************************"
 
 function read_input(){
     local c
-    read -p "Enter your choice [ 1-7 ] " c
+    read -p "Enter your choice [ 1-7 ]:  " c
     case $c in
         1) os_info ;;
         2) host_info ;;
@@ -127,7 +127,7 @@ function read_input(){
         6) mem_info ;;
         7) echo "Ciao!"; exit 0 ;;
         *)
-            echo "Please select between 1 to 7:  "
+            echo "Select an Option (1 to 7):  "
             pause
     esac 
 }

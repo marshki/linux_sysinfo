@@ -5,11 +5,12 @@ Ideally, this script should run in Centos 7, Debian 8, Mac OS X (11), & Ubuntu 1
 Still a WIP.  
 # TODO
 
-- [ ] Test on: 
+- [ ] Get to work on: 
     - [ ] Centos 7
     - [ ] Debian 8
     - [ ] Ubuntu 16.04
     - [ ] Mac OSX 11
+- [ ] Fix net_info is OSX 
 - [ ] Fix mem_info badness in Ubuntu (TMI) 
 - [ ] Fix os_info in Centos 7 (TLI)
 - [ ] user_info should probably yield less info 
