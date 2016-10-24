@@ -15,10 +15,17 @@ function host_info(){
     echo "Hostname : $(hostname -s)"
     
     # echo "DNS Domain : $(hostname -d)" ## Will not work in OS X 
-    
+    # Try instead: 
+    hostname -f | sed -e 's/^[^.]*\.//'
+
+ 
     echo "Fully-qualified Domain Name (FQDN) : $(hostname -f)"
     
     # echo "Network Address (IP) : $(hostname -i)" ## Will not work in OS X 
+    # Try instead: 
+    ifconfig en0 |awk '/inet / {print $2; }' # should add this higher up in the function 
+					     # there should be a better way to get at this info
+
     
     echo "DNS name servers (DNS IP) : ${dnsips}"
 
