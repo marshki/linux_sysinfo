@@ -11,10 +11,15 @@ function write_header(){
 function host_info(){
     local dnsips=$(sed -e '/^$/d' /etc/resolv.conf |awk '{if (tolower($1)=="nameserver") print $2}')
     write_header "  Hostname and DNS Info"
+    
     echo "Hostname : $(hostname -s)"
-    echo "DNS Domain : $(hostname -d)"
+    
+    # echo "DNS Domain : $(hostname -d)" ## Will not work in OS X 
+    
     echo "Fully-qualified Domain Name (FQDN) : $(hostname -f)"
-    echo "Network Address (IP) : $(hostname -i)"
+    
+    # echo "Network Address (IP) : $(hostname -i)" ## Will not work in OS X 
+    
     echo "DNS name servers (DNS IP) : ${dnsips}"
 
 
