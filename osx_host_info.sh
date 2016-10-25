@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Get info about Host (DNS, IP, Hostname)
+# Working to get this going in the least obtrusive way possible. 
+# Still not there yet 10.24.2016
 
 function write_header(){
     local h="$@"
