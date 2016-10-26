@@ -10,9 +10,10 @@ function write_header(){
 }
 
 function host_info(){
-    local dnsips=$(sed -e '/^$/d' /etc/resolv.conf |awk '{if (tolower($1)=="nameserver") print $2}')
     local dnsdomain=$(hostname -f | sed -e 's/^[^.]*\.//')
     local netaddr=$(ifconfig lo0 |awk '/inet / {print $2; }')
+    local dnsips=$(sed -e '/^$/d' /etc/resolv.conf |awk '{if (tolower($1)=="nameserver") print $2}')
+
     write_header "  Hostname and DNS Info"
     echo "Hostname : $(hostname -s)"
     echo "DNS Domain : $(dnsdomain)"    
