@@ -24,3 +24,4 @@ echo "**************************"
         pause
 }
 
+#hostinfo | grep memory
