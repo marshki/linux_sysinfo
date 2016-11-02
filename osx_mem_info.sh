@@ -12,7 +12,7 @@
 
 function mem_info(){
         write_header "Free & Used Memory "
-        free -m
+        top -l -s 0 |grep PhysMem
     echo "**************************"
         echo "*** Virtual Memory Statistics ***"
     echo "**************************"
