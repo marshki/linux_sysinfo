@@ -1,0 +1,4 @@
+# getting at ps data 
+
+ps aux |awk 'NR==1{print $0}'    # get header row from ps 
+
