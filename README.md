@@ -12,9 +12,9 @@ Still a WIP.
 # TODO
 
 - [ ] Get to work on: 
-    - [ ] Centos 7
-    - [ ] Debian 8
-    - [ ] Ubuntu 16.04
+    - [x] Centos 7
+    - [x] Debian 8
+    - [x] Ubuntu 16.04
     - [ ] Mac OSX 11
 - [ ] Overly verbose output for: `ps auxf |sort -nr -k 4`|head -5 
 - [ ] `ip` command not found in OS X 
