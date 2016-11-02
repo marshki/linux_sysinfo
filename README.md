@@ -1,8 +1,11 @@
 # Bash System Info  
 
 Bash script to extract useful information from a `*NIX` host using a menu-driven interface.
-Ideally, this script should run in Centos 7, Debian 8, Mac OS X (11), & Ubuntu 16.04.  
+Ideally, this script should run in: Centos 7, Debian 8, Mac OS X (11), & Ubuntu 16.04. 
+**UPDATE (11.01.2016): ** Will need to fork program and have two distinct branches--one for Linux-based OSs and one for OS X / FreeBSD
+
 Still a WIP.  
+
 # TODO
 
 - [ ] Get to work on: 
