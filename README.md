@@ -7,7 +7,7 @@ Ideally, this script should run in: Centos 7, Debian 8, Mac OS X (11), & Ubuntu 
 
 Will need to fork program and have two distinct branches--one for Linux-based OSs and one for OS X / FreeBSD
 
-Still a WIP.  
+Still a work in progress.  
 
 # TODO
 
