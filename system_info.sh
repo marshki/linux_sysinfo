@@ -109,7 +109,7 @@ function mem_info(){
 echo "**************************"
         echo "*** Top 5 Memory Eating Process ***"
 echo "**************************"
-        ps auxf | sort -nr -k 4 | head -5           # sort --numeric-sort --reverse --key=4 |head -5   
+        ps auxf |sort --numeric-sort --reverse --key=4 |head -5  # sort -nr -k 4 | head -5           
         pause
 }
 
