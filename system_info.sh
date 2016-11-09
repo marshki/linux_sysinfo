@@ -53,7 +53,7 @@ function  os_info(){
 # Get info about Host(DNS, IP, Hotname)
 
 function host_info(){
-    local dnsips=$(sed -e '/^$/d' /etc/resolv.conf |awk '{if (tolower($1)=="nameserver") print $2}')
+    local dnsips=$(sed --expression='/^$/d' /etc/resolv.conf |awk '{if (tolower($1)=="nameserver") print $2}') # sed -e 
     write_header "  Hostname and DNS Info"
     echo "Hostname : $(hostname --short)"                               # hostname -s 
     echo "DNS Domain : $(hostname --domain)"                            # hostname -d 
@@ -66,22 +66,23 @@ function host_info(){
 # Get info about Network Interface and Routing 
 
 function net_info(){
-    devices=$(netstat -i | cut -d" " -f1 | egrep -v "Kernel|Iface|lo")
+    devices=$(netstat --interfaces | cut --delimiter=" " --fields=1 | egrep --invert-match "Kernel|Iface|lo")   
+    # devices=$(netstat -i | cut -d" " -f1 | egrep -v "Kernel|Iface|lo")
     write_header "  Network Info"
-    echo "Total network interfaces found : $(wc -w <<<${devices})"
+    echo "Total network interfaces found : $(wc --words <<<${devices})"     #$(wc --words <<<${devices})"
     
     echo "*** IP Addresses Info ***"
-    ip -4 address show 
+    ip -family inet address show                                           #ip -4 address show 
 
     echo "**************************"
     echo "**** Network Routing  ****"
     echo "**************************"
-    netstat -nr 
+    netstat --numeric --route                                               # netstat -nr 
 
     echo "**************************"
     echo "* Interface traffic Info *"
     echo "**************************"
-    netstat -i 
+    netstat --interfaces                                                    # netstat -i  
 
     pause 
 }
