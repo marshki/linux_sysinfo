@@ -18,9 +18,9 @@ function pause(){
 
 function show_menu(){
     date
-    echo "--------------------------"
-    echo "      Main Menu"
-    echo "--------------------------"
+    echo "------------------------------"
+    echo "          Main Menu"
+    echo "------------------------------"
         echo "  1. OS Info" 
         echo "  2. Hostname & DNS Info"
         echo "  3. Network Info"
@@ -35,9 +35,9 @@ function show_menu(){
 
 function write_header(){
     local h="$@"
-    echo "--------------------------"
+    echo "------------------------------"
     echo "  ${h}"
-    echo "--------------------------"
+    echo "------------------------------"
 }
 
 # Get info about Operating System 
@@ -74,14 +74,14 @@ function net_info(){
     echo "*** IP Addresses Info ***"
     ip -family inet address show                                            #ip -4 address show 
 
-    echo "**************************"
-    echo "**** Network Routing  ****"
-    echo "**************************"
+    echo "******************************"
+    echo "****** Network Routing  ******"
+    echo "******************************"
     netstat --numeric --route                                               # netstat -nr 
 
-    echo "**************************"
-    echo "* Interface traffic Info *"
-    echo "**************************"
+    echo "******************************"
+    echo "*** Interface traffic Info ***"
+    echo "******************************"
     netstat --interfaces                                                    # netstat -i  
 
     pause 
@@ -92,7 +92,7 @@ function net_info(){
 function user_info(){
     local cmd="$1"
     case "$cmd" in
-        who) write_header " Who is online? "; who -heading; pause ;;                      # who -H 
+        who) write_header " Who is online? "; who --heading; pause ;;                      # who -H 
         last) write_header " List of last logged in users "; last; pause ;;
     esac
 }
@@ -103,12 +103,12 @@ function mem_info(){
         write_header "Free & Used Memory "
         free --giga --human                         # free -gh  
 
-    echo "**************************"
-        echo "*** Virtual Memory Statistics ***"
-    echo "**************************"
+    echo "******************************"
+    echo "* Virtual Memory Statistics  *"
+    echo "******************************"
         vmstat
-echo "**************************"
-        echo "*** Top 5 Memory Eating Process ***"
+echo "******************************"
+echo "*** Top 5 Memory Eating Process ***"
 echo "**************************"
         ps auxf |sort --numeric-sort --reverse --key=4 |head -5  # sort -nr -k 4 | head -5           
         pause
