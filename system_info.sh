@@ -72,7 +72,7 @@ function net_info(){
     echo "Total network interfaces found : $(wc --words <<<${devices})"     #$(wc --words <<<${devices})"
     
     echo "*** IP Addresses Info ***"
-    ip -family inet address show                                           #ip -4 address show 
+    ip -family inet address show                                            #ip -4 address show 
 
     echo "**************************"
     echo "**** Network Routing  ****"
@@ -92,7 +92,7 @@ function net_info(){
 function user_info(){
     local cmd="$1"
     case "$cmd" in
-        who) write_header " Who is online? "; who -H; pause ;;
+        who) write_header " Who is online? "; who -heading; pause ;;                      # who -H 
         last) write_header " List of last logged in users "; last; pause ;;
     esac
 }
