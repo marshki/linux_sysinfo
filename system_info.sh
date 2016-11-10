@@ -1,5 +1,8 @@
 #!/bin/bash
-# This script allows you to extract useful information from a *NIX host using a menu-driven interface. 
+###################################################################
+###    Bash shell script to extract useful information about    ###
+###    a Linux client using a menu-driven interface.            ###
+###################################################################
 
 # Define variables 
 
@@ -69,10 +72,10 @@ function net_info(){
     devices=$(netstat --interfaces | cut --delimiter=" " --fields=1 | egrep --invert-match "Kernel|Iface|lo")   
     # devices=$(netstat -i | cut -d" " -f1 | egrep -v "Kernel|Iface|lo")
     write_header "  Network Info"
-    echo "Total network interfaces found : $(wc --words <<<${devices})"     #$(wc --words <<<${devices})"
+    echo "Total network interfaces found : $(wc --words <<<${devices})"     # $(wc --words <<<${devices})"
     
-    echo "*** IP Addresses Info ***"
-    ip -family inet address show                                            #ip -4 address show 
+    echo "***** IP Addresses Info  *****"
+    ip -family inet address show                                            # ip -4 address show 
 
     echo "******************************"
     echo "****** Network Routing  ******"
@@ -92,7 +95,7 @@ function net_info(){
 function user_info(){
     local cmd="$1"
     case "$cmd" in
-        who) write_header " Who is online? "; who --heading; pause ;;                      # who -H 
+        who) write_header " Who is online? "; who --heading; pause ;;       # who -H 
         last) write_header " List of last logged in users "; last; pause ;;
     esac
 }
@@ -107,9 +110,10 @@ function mem_info(){
     echo "* Virtual Memory Statistics  *"
     echo "******************************"
         vmstat
-echo "******************************"
+
+echo "***********************************"
 echo "*** Top 5 Memory Eating Process ***"
-echo "**************************"
+echo "***********************************"
         ps auxf |sort --numeric-sort --reverse --key=4 |head -5  # sort -nr -k 4 | head -5           
         pause
 }
