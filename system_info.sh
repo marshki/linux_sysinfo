@@ -1,8 +1,9 @@
-#!/bin/bash
-###################################################################
-###    Bash shell script to extract useful information about    ###
-###    a Linux client using a menu-driven interface.            ###
-###################################################################
+#!/usr/bin/env bash 
+
+############################################################
+####   Bash shell script to extract useful information  ####
+####   from a Linux box using a text-based interface.   ####
+############################################################
 
 # Define variables 
 
@@ -95,7 +96,7 @@ function net_info(){
 function user_info(){
     local cmd="$1"
     case "$cmd" in
-        who) write_header " Who is online? "; who --heading; pause ;;       # who -H 
+        who) write_header " Who is online? "; who --heading; pause ;;       	# who -H 
         last) write_header " List of last logged in users "; last; pause ;;
     esac
 }
@@ -104,7 +105,7 @@ function user_info(){
 
 function mem_info(){
         write_header "Free & Used Memory "
-        free --giga --human                         # free -gh  
+        free --giga --human                         				# free -gh  
 
     echo "******************************"
     echo "* Virtual Memory Statistics  *"
@@ -114,7 +115,7 @@ function mem_info(){
 echo "***********************************"
 echo "*** Top 5 Memory Eating Process ***"
 echo "***********************************"
-        ps auxf |sort --numeric-sort --reverse --key=4 |head -5  # sort -nr -k 4 | head -5           
+        ps auxf |sort --numeric-sort --reverse --key=4 |head -5  		# sort -nr -k 4 | head -5           
         pause
 }
 
