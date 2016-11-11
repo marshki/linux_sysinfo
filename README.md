@@ -21,7 +21,7 @@ Still a work in progress.
 - [ ] `free` command not found in OS X
 - [ ] `vmstat` command not found in OS X 
 - [ ] `ps auxf` chokes on pipe in OS X  
-- [ ] go with verbose command line options when possible 
+- [x] go with verbose command line options when possible 
 - [ ] Defeat more badness as it comes up
 
 # History 
