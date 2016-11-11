@@ -54,7 +54,7 @@ function  os_info(){
     pause 
 }
 
-# Get info about Host(DNS, IP, Hotname)
+# Get info about Host(DNS, IP, Hostname)
 
 function host_info(){
     local dnsips=$(sed --expression='/^$/d' /etc/resolv.conf |awk '{if (tolower($1)=="nameserver") print $2}') # sed -e 
@@ -115,6 +115,7 @@ function mem_info(){
 echo "***********************************"
 echo "*** Top 5 Memory Eating Process ***"
 echo "***********************************"
+        ps aux |awk 'NR==1{print $0}'                                   # get header row from ps
         ps auxf |sort --numeric-sort --reverse --key=4 |head -5  		# sort -nr -k 4 | head -5           
         pause
 }
