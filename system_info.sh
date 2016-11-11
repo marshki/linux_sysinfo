@@ -97,7 +97,7 @@ function user_info(){
     local cmd="$1"
     case "$cmd" in
         who) write_header " Who is online? "; who --heading; pause ;;       	# who -H 
-        last) write_header " List of last logged in users "; last; pause ;;
+        last) write_header " List of last logged in users "; last -n 10 -a -d; pause ;;
     esac
 }
 
