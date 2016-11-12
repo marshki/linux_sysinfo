@@ -116,7 +116,8 @@ echo "***********************************"
 echo "*** Top 5 Memory Eating Process ***"
 echo "***********************************"
         ps aux |awk 'NR==1{print $0}'                                   # get header row from ps
-        ps auxf |sort --numeric-sort --reverse --key=4 |head -5  		# sort -nr -k 4 | head -5           
+        ps auxf |sort --numeric-sort --reverse --key=4 |head -5|awk '{ print $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13}'
+  		# sort -nr -k 4 | head -5           
         pause
 }
 
