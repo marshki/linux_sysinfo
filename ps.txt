@@ -4,3 +4,4 @@ ps aux |awk 'NR==1{print $0}'    # get header row from ps
 
 ps -Ao user,uid,comm,pid,pcpu,tty --sort=-pcpu | head -n 6 # more efficient 
 ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head -5
+ps -Ao user,pcpu,pmem,command --sort=-%mem,-%cpu |head -5 |awk '{print $1, $2, $3, $4}'
