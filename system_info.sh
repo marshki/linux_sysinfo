@@ -112,9 +112,9 @@ function mem_info(){
         write_header "Free & Used Memory "
         free --giga --human                         				# free -gh  
 
-    echo "******************************"
-    echo "* Virtual Memory Statistics  *"
-    echo "******************************"
+echo "***********************************"
+echo "***  Virtual Memory Statistics  ***"
+echo "***********************************"
         vmstat
 
 echo "***********************************"
