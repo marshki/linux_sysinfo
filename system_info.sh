@@ -1,4 +1,5 @@
 #!/usr/bin/env bash 
+# mjk 2016.10.07
 
 ############################################################
 ####   Bash shell script to extract useful information  ####
@@ -75,8 +76,11 @@ function net_info(){
     write_header "  Network Info"
     echo "Total network interfaces found : $(wc --words <<<${devices})"     # $(wc --words <<<${devices})"
     
+    echo "******************************"
     echo "***** IP Addresses Info  *****"
+    echo "******************************"
     ip -family inet address show                                            # ip -4 address show 
+
 
     echo "******************************"
     echo "****** Network Routing  ******"
