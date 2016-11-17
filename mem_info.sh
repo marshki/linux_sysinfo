@@ -14,5 +14,4 @@ echo "***********************************"
         echo "${processes}" | head -6 |awk '{print $1, $2, $3, $4, $5, $6, $6, $7}'
         #pause
 }
-
 mem_info 
