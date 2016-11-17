@@ -1,9 +1,0 @@
-# getting at ps data 
-# add a test 
-ps aux |awk 'NR==1{print $0}'    # get header row from ps 
-
-ps -Ao user,uid,comm,pid,pcpu,tty --sort=-pcpu | head -n 6 # more efficient 
-ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head -5
-ps -Ao user,pcpu,pmem,command --sort=-%mem,-%cpu |head -5 |awk '{print $1, $2, $3, $4}'
-
-ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu |head -6 |awk '{print $1, $2, $3, $4, $5, $6, $7}'  
