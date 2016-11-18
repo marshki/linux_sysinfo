@@ -15,7 +15,7 @@ Still a work in progress.
     - [x] Centos 7
     - [x] Debian 8
     - [x] Ubuntu 16.04
-    - [ ] Mac OSX 11
+    - [ ] Mac OSX 11 (will eventually make separate repo)
 - [ ] Overly verbose output for: `ps auxf |sort -nr -k 4`|head -5 
 - [ ] `ip` command not found in OS X 
 - [ ] `free` command not found in OS X
