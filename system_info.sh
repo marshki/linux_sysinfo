@@ -51,14 +51,14 @@ function  os_info(){
     write_header "System Info"
     echo "Operating System : $(uname)"
     [ -x $LSB ] && $LSB -a || echo "$LSB command is not installed (set \$LSB variable)"
-    # pause "Press [Enter] key to continue..."
-    pause 
+    pause                                                               # pause "Press [Enter] key to continue..."
 }
 
 # Get info about Host(DNS, IP, Hostname)
 
 function host_info(){
     local dnsips=$(sed --expression='/^$/d' /etc/resolv.conf |awk '{if (tolower($1)=="nameserver") print $2}') # sed -e 
+    
     write_header "Hostname and DNS Info"
     echo "Hostname : $(hostname --short)"                               # hostname -s 
     echo "DNS Domain : $(hostname --domain)"                            # hostname -d 
@@ -73,6 +73,7 @@ function host_info(){
 function net_info(){
     devices=$(netstat --interfaces | cut --delimiter=" " --fields=1 | egrep --invert-match "Kernel|Iface|lo")   
     # devices=$(netstat -i | cut -d" " -f1 | egrep -v "Kernel|Iface|lo")
+    
     write_header "Network Info"
     echo "Total network interfaces found : 
     $(wc --words <<<${devices})"                                        # $(wc --words <<<${devices})"
@@ -109,6 +110,7 @@ function user_info(){
 
 function mem_info(){
         local processes=$(ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu) 
+        
         write_header "Free & Used Memory "
         free --giga --human                         				    # free -gh  
     
