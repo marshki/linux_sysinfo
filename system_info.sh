@@ -73,7 +73,7 @@ function host_info(){
 function net_info(){
     devices=$(netstat --interfaces | cut --delimiter=" " --fields=1 | egrep --invert-match "Kernel|Iface|lo")   
     # devices=$(netstat -i | cut -d" " -f1 | egrep -v "Kernel|Iface|lo")
-    write_header " Network Info"
+    write_header "Network Info"
     echo "Total network interfaces found : 
     $(wc --words <<<${devices})"                                        # $(wc --words <<<${devices})"
     
