@@ -24,7 +24,7 @@ function pause(){
 function show_menu(){
     date
     echo "------------------------------"
-    echo "      Main Menu"
+    echo "  Main Menu                   "
     echo "------------------------------"
         echo "  1. OS Info" 
         echo "  2. Hostname & DNS Info"
@@ -48,8 +48,8 @@ function write_header(){
 # Get info about Operating System 
 
 function  os_info(){
-    write_header "  System Info"
-    echo "  Operating System : $(uname)"
+    write_header "System Info"
+    echo "Operating System : $(uname)"
     [ -x $LSB ] && $LSB -a || echo "$LSB command is not installed (set \$LSB variable)"
     # pause "Press [Enter] key to continue..."
     pause 
@@ -59,7 +59,7 @@ function  os_info(){
 
 function host_info(){
     local dnsips=$(sed --expression='/^$/d' /etc/resolv.conf |awk '{if (tolower($1)=="nameserver") print $2}') # sed -e 
-    write_header "  Hostname and DNS Info"
+    write_header "Hostname and DNS Info"
     echo "Hostname : $(hostname --short)"                               # hostname -s 
     echo "DNS Domain : $(hostname --domain)"                            # hostname -d 
     echo "Fully-qualified Domain Name (FQDN) : $(hostname --fqdn)"      # hostname -f 
@@ -73,32 +73,24 @@ function host_info(){
 function net_info(){
     devices=$(netstat --interfaces | cut --delimiter=" " --fields=1 | egrep --invert-match "Kernel|Iface|lo")   
     # devices=$(netstat -i | cut -d" " -f1 | egrep -v "Kernel|Iface|lo")
-    write_header "  Network Info"
+    write_header " Network Info"
     echo "Total network interfaces found : 
-    $(wc --words <<<${devices})"     # $(wc --words <<<${devices})"
+    $(wc --words <<<${devices})"                                        # $(wc --words <<<${devices})"
+    
     echo "------------------------------"
-    #echo "******************************"
-    echo "      IP Addresses Info       "
-    #echo "******************************"
+    echo "  IP Addresses Info           "
     echo "------------------------------"
-    ip -family inet address show                                            # ip -4 address show 
+    ip -family inet address show                                        # ip -4 address show 
 
+    echo "------------------------------"
+    echo "  Network Routing             "
+    echo "------------------------------"
+    netstat --numeric --route                                           # netstat -nr 
 
-    #echo "******************************"
-    #echo "****** Network Routing  ******"
-    #echo "******************************"
     echo "------------------------------"
-    echo "      Network Routing         "
+    echo "  Interface traffic info      "
     echo "------------------------------"
-    netstat --numeric --route                                               # netstat -nr 
-
-    #echo "******************************"
-    #echo "*** Interface traffic Info ***"
-    #echo "******************************"
-    echo "------------------------------"
-    echo "      Interface traffic info  "
-    echo "------------------------------"
-    netstat --interfaces                                                    # netstat -i  
+    netstat --interfaces                                                # netstat -i  
 
     pause 
 }
@@ -108,8 +100,8 @@ function net_info(){
 function user_info(){
     local cmd="$1"
     case "$cmd" in
-        who) write_header " Who is online? "; who --heading; pause ;;       	# who -H 
-        last) write_header "    List of last 10 logged in users "; last -n 10 -a -d; pause ;;
+        who) write_header "Who is online? "; who --heading; pause ;;    # who -H 
+        last) write_header "Last 10 logged in users "; last -n 10 -a -d; pause ;;
     esac
 }
 
@@ -117,17 +109,17 @@ function user_info(){
 
 function mem_info(){
         local processes=$(ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu) 
-        write_header "  Free & Used Memory "
-        free --giga --human                         				# free -gh  
-
-    echo "***********************************"
-    echo "***  Virtual Memory Statistics  ***"
-    echo "***********************************"
+        write_header "Free & Used Memory "
+        free --giga --human                         				    # free -gh  
+    
+    echo "------------------------------"
+    echo "  Virtual Memory Statistics   "
+    echo "------------------------------"
     vmstat
-
-    echo "***********************************"
-    echo "*** Top 5 Memory Eating Process ***"
-    echo "***********************************"
+    
+    echo "------------------------------"
+    echo "  Top 5 Memory Eating Process  "
+    echo "------------------------------"
     echo "${processes}" | head -6 |awk '{print $1, $2, $3, $4, $5, $6, $6, $7}'
     pause
 }
