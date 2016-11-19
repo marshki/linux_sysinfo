@@ -6,11 +6,11 @@
 ####   from a Linux box using a text-based interface.   ####
 ############################################################
 
-# Define variables 
+#### Define variables ####
 
 LSB=/usr/bin/lsb_release 
 
-# Display pause prompt
+#### Display pause prompt ####
 # $1-> Message (optional)
 
 function pause(){
@@ -19,7 +19,7 @@ function pause(){
     read -p "$message" readEnterKey            
 }
 
-# Display on-screen menu
+#### Display on-screen menu ####
 
 function show_menu(){
     date
@@ -35,7 +35,7 @@ function show_menu(){
         echo "  7. Exit" 
 }
 
-# Display header message 
+#### Display header message #### 
 # $1 - message 
 
 function write_header(){
@@ -45,7 +45,7 @@ function write_header(){
     echo "------------------------------"
 }
 
-# Get info about Operating System 
+#### Get info about Operating System ####
 
 function  os_info(){
     write_header "System Info"
@@ -54,7 +54,7 @@ function  os_info(){
     pause                                                               # pause "Press [Enter] key to continue..."
 }
 
-# Get info about Host(DNS, IP, Hostname)
+#### Get info about Host(DNS, IP, Hostname) ####
 
 function host_info(){
     local dnsips=$(sed --expression='/^$/d' /etc/resolv.conf |awk '{if (tolower($1)=="nameserver") print $2}') # sed -e 
@@ -68,7 +68,7 @@ function host_info(){
     pause
 }
 
-# Get info about Network Interface and Routing 
+#### Get info about Network Interface and Routing ####
 
 function net_info(){
     devices=$(netstat --interfaces | cut --delimiter=" " --fields=1 | egrep --invert-match "Kernel|Iface|lo")   
@@ -96,7 +96,7 @@ function net_info(){
     pause 
 }
 
-# Display a list of users currently logged on & a list of recently logged in users
+#### Display list of users currently logged on & a list of recently logged in users ####
 
 function user_info(){
     local cmd="$1"
@@ -106,7 +106,7 @@ function user_info(){
     esac
 }
 
-# Display used and free memory info 
+#### Display used and free memory info ####
 
 function mem_info(){
         local processes=$(ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu) 
@@ -126,7 +126,7 @@ function mem_info(){
     pause
 }
 
-# Get input via the keyboard and make a decision using case..esac 
+#### Get input via the keyboard and make a decision using case..esac ####
 
 function read_input(){
     local c
@@ -145,11 +145,11 @@ function read_input(){
     esac 
 }
 
-# Ignore CTRL+C, CTRL+Z and quit singles using the trap 
+#### Ignore CTRL+C, CTRL+Z and quit singles using the trap ####
 
 trap '' SIGINT SIGQUIT SIGTSTP
 
-# Main logic 
+#### Main logic ####
 
 while true 
 do 
