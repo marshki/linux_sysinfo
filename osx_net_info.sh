@@ -8,7 +8,7 @@ function net_info(){
     echo "Total network interfaces found : $(wc -w <<<${devices})"
     
     echo "*** IP Addresses Info ***"
-    ip -4 address show 
+    ip -4 address show      # os x doesn't like this command  
 
     echo "**************************"
     echo "**** Network Routing  ****"
