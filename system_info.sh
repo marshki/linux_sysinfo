@@ -67,7 +67,7 @@ function host_info(){
     echo "DNS Domain : $(hostname --domain)"                            # hostname -d 
     echo "Fully-qualified Domain Name (FQDN) : $(hostname --fqdn)"      # hostname -f 
     echo "Network Address (IP) : $(hostname --ip-address)"              # hostname -i 
-    echo "DNS name servers (DNS IP) : ${dnsips}"                        # regex /etc/resolv.conf to retrieve DNS resolver info 
+    echo "DNS name servers (DNS IP) : ${dnsips}"                            
     pause
 }
 
