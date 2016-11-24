@@ -7,10 +7,11 @@
 ############################################################
 
 #### Define variables ####
-
+# Linux Standard Base Module (LSB) provides distro-specific info 
 LSB=/usr/bin/lsb_release 
 
 #### Display pause prompt ####
+# Suspend processing of script, displays message prompting user to press [Enter] key to continue
 # $1-> Message (optional)
 
 function pause(){
