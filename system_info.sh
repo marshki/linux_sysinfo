@@ -8,10 +8,11 @@
 
 #### Define variables ####
 # Linux Standard Base Module (LSB) provides distro-specific info 
+
 LSB=/usr/bin/lsb_release 
 
 #### Display pause prompt ####
-# Suspend processing of script, displays message prompting user to press [Enter] key to continue
+# Suspend processing of script; display message prompting user to press [Enter] key to continue
 # $1-> Message (optional)
 
 function pause(){
@@ -52,20 +53,21 @@ function  os_info(){
     write_header "System Info"
     echo "Operating System : $(uname)"
     [ -x $LSB ] && $LSB -a || echo "$LSB command is not installed (set \$LSB variable)"
-    pause                                                               # pause "Press [Enter] key to continue..."
+    pause                                                               
 }
 
 #### Get info about Host(DNS, IP, Hostname) ####
 
 function host_info(){
     local dnsips=$(sed --expression='/^$/d' /etc/resolv.conf |awk '{if (tolower($1)=="nameserver") print $2}') # sed -e 
+    # regex /etc/resolv.conf to retrieve DNS resolver info  
     
     write_header "Hostname and DNS Info"
     echo "Hostname : $(hostname --short)"                               # hostname -s 
     echo "DNS Domain : $(hostname --domain)"                            # hostname -d 
     echo "Fully-qualified Domain Name (FQDN) : $(hostname --fqdn)"      # hostname -f 
     echo "Network Address (IP) : $(hostname --ip-address)"              # hostname -i 
-    echo "DNS name servers (DNS IP) : ${dnsips}"
+    echo "DNS name servers (DNS IP) : ${dnsips}"                        # regex /etc/resolv.conf to retrieve DNS resolver info 
     pause
 }
 
@@ -73,6 +75,7 @@ function host_info(){
 
 function net_info(){
     devices=$(netstat --interfaces | cut --delimiter=" " --fields=1 | egrep --invert-match "Kernel|Iface|lo")   
+    # regex netstat to list network interfaces 
     # devices=$(netstat -i | cut -d" " -f1 | egrep -v "Kernel|Iface|lo")
     
     write_header "Network Info"
@@ -111,6 +114,7 @@ function user_info(){
 
 function mem_info(){
         local processes=$(ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu) 
+        # regex ps output to extract and sort top memory (then cpu) consuming processes  
         
         write_header "Free & Used Memory "
         free --giga --human                         				    # free -gh  
