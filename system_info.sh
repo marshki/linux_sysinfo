@@ -125,9 +125,9 @@ function mem_info(){
     vmstat
     
     echo "------------------------------"
-    echo "  Top 5 Memory Eating Process  "
+    echo "  Top 10 Memory Eating Process  "
     echo "------------------------------"
-    echo "${processes}" | head -6 |awk '{print $1, $2, $3, $4, $5, $6, $6, $7}'
+    echo "${processes}" | head -11 |awk '{print $1, $2, $3, $4, $5, $6, $6, $7}'
     pause
 }
 
