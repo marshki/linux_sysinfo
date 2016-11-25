@@ -17,11 +17,8 @@ Still a work in progress.
     - [x] Ubuntu 16.04
     
 - [x] Overly verbose output for: `ps auxf |sort -nr -k 4`|head -5 
-- [ ] `ip` command not found in OS X 
-- [ ] `free` command not found in OS X
-- [ ] `vmstat` command not found in OS X 
-- [ ] `ps auxf` chokes on pipe in OS X  
 - [x] go with verbose command line options when possible 
+- [ ] Add function for disk space and top ten disk eating files 
 - [ ] Defeat more badness as it comes up
 
 # History 
