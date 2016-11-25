@@ -1,9 +1,10 @@
 #!/bin/bash 
 # Function to retrieve disk space and 10 largest files on system 
-# For this to work correctly, user needs elevated privileges?
 
+# Bare-bones 
 
 function disk_space(){
+    tput blink; echo "Retrieving results...";        tput sgr0
     find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null | sort --reverse --human | head --lines=10 
     # find / -type f -exec du -Sh {} + | sort -rh | head -n 10
 }
