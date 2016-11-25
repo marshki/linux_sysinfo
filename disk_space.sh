@@ -4,7 +4,7 @@
 
 
 function disk_space(){
-    find / -type f -exec du --separate-dirs --human-readable {} + | sort --reverse --human | head --lines=10 
+    find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null | sort --reverse --human | head --lines=10 
     # find / -type f -exec du -Sh {} + | sort -rh | head -n 10
 }
 
