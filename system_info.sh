@@ -77,7 +77,7 @@ function host_info(){
 #### Get info about Network Interface and Routing ####
 
 function net_info(){
-    devices=$(netstat --interfaces | cut --delimiter=" " --fields=1 | egrep --invert-match "Kernel|Iface|lo")   
+    local devices=$(netstat --interfaces | cut --delimiter=" " --fields=1 | egrep --invert-match "Kernel|Iface|lo")   
     # regex netstat to list network interfaces 
     # devices=$(netstat -i | cut -d" " -f1 | egrep -v "Kernel|Iface|lo")
     
@@ -116,11 +116,11 @@ function user_info(){
 #### Display used and free memory info ####
 
 function mem_info(){
-        local processes=$(ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu) 
-        # regex ps to define, extract, and sort top memory (then cpu) consuming processes  
+    local processes=$(ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu) 
+    # regex ps to define, extract, and sort top memory (then cpu) consuming processes  
         
-        write_header "Free & Used Memory "
-        free --giga --human                         				    # free -gh  
+    write_header "Free & Used Memory "
+    free --giga --human                         				    # free -gh  
     
     echo "------------------------------"
     echo "  Virtual Memory Statistics   "
