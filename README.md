@@ -1,6 +1,6 @@
 # Bash System Info  
 
-[!MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hyperium/hyper/master/LICENSE)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hyperium/hyper/master/LICENSE)
 
 Bash script to extract useful information from a `Linux` host using a menu-driven interface.
 This script will be tested to run in: Centos 7, Debian 8 & Ubuntu 16.04, though it should work on other distros as well. 
