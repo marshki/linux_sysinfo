@@ -1,4 +1,5 @@
 # Bash System Info  
+[![Code Health](https://landscape.io/github/marshki/bash_sys_info/master/landscape.svg?style=flat)](https://landscape.io/github/marshki/bash_sys_info/master)
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hyperium/hyper/master/LICENSE)
 
