@@ -34,7 +34,8 @@ function show_menu(){
         echo "  4. Who is Online"
         echo "  5. Last Logged in Users"
         echo "  6. Free & Used Memory Info"
-        echo "  7. Exit" 
+        echo "  7. Disk Usage" 
+        echo "  8. Exit" 
 }
 
 #### Display header message #### 
@@ -135,7 +136,7 @@ function mem_info(){
 
 function read_input(){
     local c
-    read -p "Enter your choice [ 1-7 ]:  " c
+    read -p "Enter your choice [ 1-8 ]:  " c
     case $c in
         1) os_info ;;
         2) host_info ;;
@@ -143,9 +144,10 @@ function read_input(){
         4) user_info "who" ;;
         5) user_info "last" ;;
         6) mem_info ;;
-        7) echo "Ciao!"; exit 0 ;;
+        7) disk_space;;
+        8) echo "Ciao!"; exit 0 ;;
         *)
-            echo "Select an Option (1 to 7):  "
+            echo "Select an Option (1 to 8):  "
             pause
     esac 
 }
