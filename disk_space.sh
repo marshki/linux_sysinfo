@@ -17,7 +17,7 @@ function disk_space(){
     # find / -type f -exec du -Sh {} + 2>/dev/null
          
     write_header "Disk Usage" 
-    df --human-readable --total                                                     # df -h --total  
+    df --human-readable --total | awk 'NR==1; END{print}'                           # df -h --total   
     
     echo "Retrieving largest files..."
     
