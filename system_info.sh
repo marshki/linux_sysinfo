@@ -132,6 +132,8 @@ function mem_info(){
     pause
 }
 
+#### Display information on disk space usage ####
+
 #### Get input via the keyboard and make a decision using case..esac ####
 
 function read_input(){
