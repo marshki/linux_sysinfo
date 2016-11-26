@@ -1,7 +1,5 @@
 #!/bin/bash 
-# Function to retrieve disk space and 10 largest files on system 
-
-# Bare-bones 
+#### Display information on disk space usage ####
 
 function disk_space(){
     local largestfiles=$(find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null) 
