@@ -117,7 +117,7 @@ function user_info(){
 
 function mem_info(){
         local processes=$(ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu) 
-        # regex ps output to extract and sort top memory (then cpu) consuming processes  
+        # regex ps to define, extract, and sort top memory (then cpu) consuming processes  
         
         write_header "Free & Used Memory "
         free --giga --human                         				    # free -gh  
