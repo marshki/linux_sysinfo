@@ -19,7 +19,7 @@ function disk_space(){
     write_header "Disk Usage" 
     df --human-readable --total | awk 'NR==1; END{print}'                           # df -h --total   
     
-    echo "Retrieving largest files..."
+    # echo "Retrieving largest files..."
     
     echo "------------------------------" 
     echo "   Top 10 Disk Eating Files   " 
@@ -27,7 +27,7 @@ function disk_space(){
     echo "${largestfiles}" |sort --reverse --human | head --lines=10                # sort -rh | head -n 10
  
     # find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null | sort --reverse --human | head --lines=10 
-    # find / -type f -exec du -Sh {} + | sort -rh | head -n 10
+    # find / -type f -exec du -Sh {} + 2>/dev/null | sort -rh | head -n 10
 }
 
 disk_space
