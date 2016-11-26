@@ -1,24 +1,24 @@
 # Bash System Info  
 
 Bash script to extract useful information from a `Linux` host using a menu-driven interface.
-This script will be tested to run in: Centos 7, Debian 8 & Ubuntu 16.04. 
+This script will be tested to run in: Centos 7, Debian 8 & Ubuntu 16.04, though it should work on other distros as well. 
 
 ** UPDATE (2016.11.01): ** 
 
-Forked program in to two distinct branches--one for Linux-based OSs and anothe for OS X / FreeBSD. 
+Forked program in to two distinct branches--one for Linux-based OSs and another for OS X / FreeBSD. 
 
-Still a work in progress.  
+Still a work in progress (2016.11.26), but can be used as is.  
 
 # TODO
 
 - [ ] Get to work on: 
-    - [x] Centos 7
+    - [ ] Centos 7
     - [x] Debian 8
     - [x] Ubuntu 16.04
     
 - [x] Overly verbose output for: `ps auxf |sort -nr -k 4`|head -5 
 - [x] go with verbose command line options when possible 
-- [ ] Add function for disk space and top ten disk eating files 
+- [x] Add function for disk space and top ten diski-eating files 
 - [ ] Defeat more badness as it comes up
 
 # History 
