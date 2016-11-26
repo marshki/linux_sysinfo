@@ -4,8 +4,13 @@
 # Bare-bones 
 
 function disk_space(){
-    tput blink; echo "Retrieving results...";        tput sgr0
-    find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null | sort --reverse --human | head --lines=10 
+    echo "Retrieving results..."
+    local largestfiles=$(find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null | sort --reverse --human |
+    head --lines=10)
+       
+    echo "${largestfiles}"   
+ 
+    # find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null | sort --reverse --human | head --lines=10 
     # find / -type f -exec du -Sh {} + | sort -rh | head -n 10
 }
 
