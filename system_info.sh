@@ -54,6 +54,7 @@ function  os_info(){
     write_header "System Info"
     echo "Operating System : $(uname)"
     [ -x $LSB ] && $LSB -a || echo "$LSB command is not installed (set \$LSB variable)"
+    
     pause                                                               
 }
 
@@ -69,6 +70,7 @@ function host_info(){
     echo "Fully-qualified Domain Name (FQDN) : $(hostname --fqdn)"      # hostname -f 
     echo "Network Address (IP) : $(hostname --ip-address)"              # hostname -i 
     echo "DNS name servers (DNS IP) : ${dnsips}"                            
+    
     pause
 }
 
@@ -129,6 +131,7 @@ function mem_info(){
     echo " Top 10 Memory Eating Process "
     echo "------------------------------"
     echo "${processes}" | head -11 |awk '{print $1, $2, $3, $4, $5, $6, $6, $7}'
+    
     pause
 }
 
@@ -152,6 +155,8 @@ function disk_space(){
 
     # find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null | sort --reverse --human | head --lines=10 
     # find / -type f -exec du -Sh {} + | sort -rh | head -n 10
+
+    pause 
 }
 
 
