@@ -181,7 +181,7 @@ function read_input(){
     esac 
 }
 
-#### Ignore CTRL+C, CTRL+Z and quit singles using the trap ####
+#### Ignore CTRL+C, CTRL+Z and quit signals using the trap ####
 
 trap '' SIGINT SIGQUIT SIGTSTP
 
