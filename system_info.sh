@@ -125,7 +125,6 @@ function mem_info(){
     # regex ps to define, extract, and sort top memory (then cpu) consuming processes  
         
     write_header "Free & Used Memory "        
-                                                               
     free --giga --human (used non-verbose opt for CentOS 7)             # free -gh  
     
     echo "------------------------------"
