@@ -124,8 +124,8 @@ function mem_info(){
     local processes=$(ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu) 
     # regex ps to define, extract, and sort top memory (then cpu) consuming processes  
         
-    write_header "Free & Used Memory "
-    free --giga --human                         				    # free -gh  
+    write_header "Free & Used Memory "        
+    free -gh                                                            # free --giga --human (used non-verbose opt for CentOS 7) 
     
     echo "------------------------------"
     echo "  Virtual Memory Statistics   "
