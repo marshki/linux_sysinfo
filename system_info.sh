@@ -4,6 +4,11 @@
 ############################################################
 ####   Bash shell script to extract useful information  ####
 ####   from a Linux box using a text-based interface.   ####
+####                                                    ####
+####   Tested to run on the following distros:          ####
+####   CentOS 7                                         ####
+####   Debian 8 "Jessie"                                ####
+####   Ubuntu 16.04 LTS "Xenial Xerus"                  ####  
 ############################################################
 
 #### Define variables ####
