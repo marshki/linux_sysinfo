@@ -20,5 +20,6 @@ function  os_info(){
     echo "Operating System : $(uname)"
     [ -x $LSB ] && $LSB -a || echo "$LSB command is not installed (set \$LSB variable)"
 
-    pause
 }
+
+os_info 
