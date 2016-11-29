@@ -19,12 +19,11 @@ function  os_info(){
     write_header "System Info"
     echo "Operating System : $(uname --kernel-name)"                # uname -s 
     echo "Kernel Version   : $(uname --kernel-release)"             # uname -r 
-    awk '/^NAME=/||/^VERSION=/' /etc/os-release                     # Not perfect, but OK. Let's print output so that we 
-                                                                    # match formatting for the earlier echo statements, e.g.
+    # awk '/^NAME=/||/^VERSION=/' /etc/os-release                   # Not perfect, but OK. Let's print output so that we 
+    awk -F'=' '{print $2}' /etc/os-release                          # match formatting for the earlier echo statements, e.g.
                                                                     # Name   :"Debian GNU/Linux"
                                                                     # Version:"8 (jessie)" 
-                                                                    # awk -F'/' '{print $1}'
-
+                                                                    
     # [ -x $LSB ] && $LSB -a || echo "$LSB command is not installed (set \$LSB variable)"
     # cat /etc/os-release 
 }
