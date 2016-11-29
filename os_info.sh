@@ -23,6 +23,8 @@ function  os_info(){
                                                                     # match formatting for the earlier echo statements, e.g.
                                                                     # Name   :"Debian GNU/Linux"
                                                                     # Version:"8 (jessie)" 
+                                                                    # awk -F'/' '{print $1}'
+
     # [ -x $LSB ] && $LSB -a || echo "$LSB command is not installed (set \$LSB variable)"
     # cat /etc/os-release 
 }
