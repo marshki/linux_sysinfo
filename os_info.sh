@@ -17,9 +17,10 @@ function write_header(){
 
 function  os_info(){
     write_header "System Info"
-    echo "Operating System : $(uname)"
-    [ -x $LSB ] && $LSB -a || echo "$LSB command is not installed (set \$LSB variable)"
-
+    echo "Operating System : $(uname --kernel-name)"                        # uname -s 
+    echo "Kernel Version   : $(uname --kernel-release)"                       # uname -r 
+    # [ -x $LSB ] && $LSB -a || echo "$LSB command is not installed (set \$LSB variable)"
+    # cat /etc/os-release 
 }
 
 os_info 
