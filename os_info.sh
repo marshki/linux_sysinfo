@@ -19,7 +19,8 @@ function  os_info(){
     write_header "System Info"
     echo "Operating System : $(uname --kernel-name)"                # uname -s 
     echo "Kernel Version   : $(uname --kernel-release)"             # uname -r 
-    awk -F'=' '/^NAME=/||/^VERSION=/ { print $2 }' /etc/os-release        
+    awk -F'=' '/^NAME=/||/^VERSION=/ { print $2 }' /etc/os-release  #      
+# | sed 's/"//g' remove quotes? 
 }    
                                                                    
     # [ -x $LSB ] && $LSB -a || echo "$LSB command is not installed (set \$LSB variable)"
