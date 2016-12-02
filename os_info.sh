@@ -1,6 +1,4 @@
 #### Define Variables ####
-# Linux Standard Base Module (LSB) provides distro-specific info
-# LSB=/usr/bin/lsb_release
 
 #### Display header message ####
 # $1 - message
@@ -25,8 +23,6 @@ function  os_info(){
     echo ${name}
     echo ${vers}
     #echo ${namevers}
-}    
-                                                                   
-    # [ -x $LSB ] && $LSB -a || echo "$LSB command is not installed (set \$LSB variable)"
-
+}                                                                      
+    
 os_info 
