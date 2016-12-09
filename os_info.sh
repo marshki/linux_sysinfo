@@ -20,9 +20,12 @@ function  os_info(){
     write_header "System Info"
     echo "Operating System : $(uname --kernel-name)"                # uname -s 
     echo "Kernel Version   : $(uname --kernel-release)"             # uname -r 
+    awk -F'[="]+' '/^(NAME)=/{printf("%-17s: %s\n",$1,$2)}' /etc/os-release
+    awk -F'[="]+' '/^(VERSION)=/{printf("%-17s: %s\n",$1,$2)}' /etc/os-release
     #awk -F'[="]+' '/^(NAME|VERSION)=/{printf("%-17s: %s\n",$1,$2)}' /etc/os-release
-    echo ${name}
-    echo ${vers}
+    
+    #echo ${name}
+    #echo ${vers}
     #echo ${namevers}
 }                                                                      
     
