@@ -18,8 +18,8 @@ function  os_info(){
     local vers=$(awk -F'[="]+' '/^(VERSION)=/{printf("%-17s: %s\n",$1,$2)}' /etc/os-release) # close, but can we clean this up?
     
     write_header "System Info"
-    #echo "Operating System : $(uname --kernel-name)"                # uname -s 
-    #echo "Kernel Version   : $(uname --kernel-release)"             # uname -r 
+    echo "Operating System : $(uname --kernel-name)"                # uname -s 
+    echo "Kernel Version   : $(uname --kernel-release)"             # uname -r 
     #awk -F'[="]+' '/^(NAME|VERSION)=/{printf("%-17s: %s\n",$1,$2)}' /etc/os-release
     echo ${name}
     echo ${vers}
