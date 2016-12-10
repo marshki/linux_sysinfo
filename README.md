@@ -20,7 +20,7 @@ Still a work in progress (2016.11.26), but can be used as is.
       We need a workaround (regex on `cat /etc/os-release`, perhaps?) --> see Issue # 14  
 - [x] Overly verbose output for: `ps auxf |sort -nr -k 4 |head -5` 
 - [x] go with verbose command line options when possible 
-- [x] Add function for disk space and top ten diski-eating files 
+- [x] Add function for disk space and top ten disk-eating files 
 - [ ] Defeat more badness as it comes up
 
 # History 
