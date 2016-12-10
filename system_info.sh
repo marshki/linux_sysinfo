@@ -56,10 +56,7 @@ function write_header(){
 #### Get info about Operating System ####
 
 function  os_info(){
-    write_header "System Info"
-    echo "Operating System : $(uname)"
-    [ -x $LSB ] && $LSB -a || echo "$LSB command is not installed (set \$LSB variable)"
-    
+        
     pause                                                               
 }
 
