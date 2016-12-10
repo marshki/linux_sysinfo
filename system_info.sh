@@ -12,9 +12,9 @@
 ############################################################
 
 #### Define variables ####
+# Originally used this variable for OS info, but the module is not installed by default in Centos 7 
 # Linux Standard Base Module (LSB) provides distro-specific info 
-
-LSB=/usr/bin/lsb_release 
+# LSB=/usr/bin/lsb_release 
 
 #### Display pause prompt ####
 # Suspend processing of script; display message prompting user to press [Enter] key to continue
@@ -57,6 +57,7 @@ function write_header(){
 
 function  os_info(){
     local namevers=$(awk -F'[="]+' '/^(NAME|VERSION)=/{printf("%-17s: %s\n",$1,$2)}' /etc/os-release)
+    # regexp on /etc/os-release to extract name and version of OS
 
     write_header "System Info"
     echo "OPEARTING SYSTEM : $(uname --kernel-name)"                # uname -s
