@@ -60,8 +60,8 @@ function  os_info(){
     # regexp on /etc/os-release to extract name and version of OS
 
     write_header "System Info"
-    echo "OPEARTING SYSTEM : $(uname --kernel-name)"                # uname -s
-    echo "KERNEL VERSION   : $(uname --kernel-release)"             # uname -r
+    echo "OPERATING SYSTEM : $(uname --kernel-name)"                    # uname -s
+    echo "KERNEL VERSION   : $(uname --kernel-release)"                 # uname -r
     printf '%s\n' "$namevers"
         
     pause                                                               
