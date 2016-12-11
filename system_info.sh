@@ -11,10 +11,13 @@
 ####   Ubuntu 16.04 LTS "Xenial Xerus"                  ####  
 ############################################################
 
-#### Define variables ####
-# Originally used this variable for OS info, but the module is not installed by default in Centos 7 
-# Linux Standard Base Module (LSB) provides distro-specific info 
-# LSB=/usr/bin/lsb_release 
+# A note on comments in this script:                       # 
+# When you see a verbose command FOLLOWED BY #,            #
+# the content to the right of the # is the abridged version# 
+# of same command.                                         # 
+# When you see a command with a # BELOW the command,       #
+# the information to the right of the # usually            #
+# describes  what the command above it does.               #
 
 #### Display pause prompt ####
 # Suspend processing of script; display message prompting user to press [Enter] key to continue
@@ -146,7 +149,6 @@ function mem_info(){
 
 #### Display information on disk space usage ####
 
-
 function disk_space(){
     local largestfiles=$(find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null)
     # find largest files by disk space; output background noise to /dev/null 
@@ -167,8 +169,6 @@ function disk_space(){
 
     pause 
 }
-
-
 
 #### Get input via the keyboard and make a decision using case..esac ####
 
