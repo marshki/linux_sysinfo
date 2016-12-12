@@ -2,15 +2,16 @@
 # mjk 2016.10.07
 
 ############################################################
-####   Bash shell script to extract useful information  ####
-####   from a Linux box using a text-based interface.   ####
-####                                                    ####
-####   Tested to run on the following distros:          ####
-####   CentOS 7                                         ####
-####   Debian 8 "Jessie"                                ####
-####   Ubuntu 16.04 LTS "Xenial Xerus"                  ####  
+#   Bash shell script to extract useful information        #
+#   from a Linux box using a text-based interface.         #
+#                                                          #
+#   Tested to run on the following distros:                #
+#   CentOS 7                                               #
+#   Debian 8 "Jessie"                                      #
+#   Ubuntu 16.04 LTS "Xenial Xerus"                        # 
 ############################################################
 
+############################################################
 # A note on comments in this script:                       # 
 # When you see a verbose command FOLLOWED BY #,            #
 # the content to the right of the # is the abridged version# 
@@ -18,6 +19,7 @@
 # When you see a command with a # BELOW the command,       #
 # the information to the right of the # usually            #
 # describes  what the command above it does.               #
+############################################################
 
 #### Display pause prompt ####
 # Suspend processing of script; display message prompting user to press [Enter] key to continue
