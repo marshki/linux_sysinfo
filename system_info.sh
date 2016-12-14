@@ -197,10 +197,10 @@ function read_input(){
 trap '' SIGINT SIGQUIT SIGTSTP
 
 #### Main logic ####
-
+# Display menu; wait for user input 
 while true 
 do 
     clear 
-    show_menu   # Display menu
-    read_input  # Wait for user input
+    show_menu   
+    read_input  
 done 
