@@ -17,8 +17,8 @@ function  cpu_info(){
     local cpu=$()  
         
     write_header "CPU Info"
-    #echo "CPU  : $(*)"          
-    #echo "Cores: $(*)"  
+    echo "CPU  : $(cat /proc/cpuinfo|grep -i 'model name')"          
+    echo "Number of Cores: $(getconf _NPROCESSORS_ONLN)"  
     printf '%s\n' "$cpu"
 
 
