@@ -22,6 +22,8 @@ Still a work in progress (2016.11.26), but can be used as is.
 - [x] go with verbose command line options when possible 
 - [x] Add function for disk space and top ten disk-eating files 
 - [x] Defeat more badness as it comes up
+- [ ] Retrieve CPU info 
+- [ ] Whiptail Menu integration (Long-term goal)
 - [ ] Add "report" function to pull information and e-mail sysadmin
 
 # History 
