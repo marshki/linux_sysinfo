@@ -14,12 +14,12 @@ function write_header(){
 #### Get info about Operating System ####
 
 function  cpu_info(){
-    local cpu=$()  
+    local cpu=$(cat /proc/cpuinfo | grep -m 1 -i 'model name' | awk '{$1=$2=$3=""; print $0}')  
         
     write_header "CPU Info"
-    echo "CPU  : $(cat /proc/cpuinfo|grep -i 'model name')"          
+    echo "CPU  : ${cpu}"          
     echo "Number of Cores: $(getconf _NPROCESSORS_ONLN)"  
-    printf '%s\n' "$cpu"
+    # printf '%s\n' "$cpu"
 
 
 }                                                                      
