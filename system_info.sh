@@ -132,6 +132,19 @@ function user_info(){
 
 ### Display CPU info ### 
 
+function cpu_info(){
+
+    write_header "CPU Info"
+
+    lscpu |grep --ignore-case 'model name'
+    lscpu |grep --ignore-case 'socket(s)'
+    lscpu |grep --ignore-case 'core(s) per socket'
+    # Query lscpu for: `model name`, `sockets`, and `numb
+
+    pause
+    
+}
+
 #### Display used and free memory info ####
 
 function mem_info(){
@@ -188,9 +201,10 @@ function read_input(){
         3) net_info ;; 
         4) user_info "who" ;;
         5) user_info "last" ;;
-        6) mem_info ;;
-        7) disk_space;;
-        8) echo "Ciao!"; exit 0 ;;
+        6) cpu_info ;; 
+        7) mem_info ;;
+        8) disk_space;;
+        9) echo "Ciao!"; exit 0 ;;
         *)
             echo "Select an Option (1 to 8):  "
             pause
