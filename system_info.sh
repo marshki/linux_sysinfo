@@ -43,9 +43,10 @@ function show_menu(){
         echo "  3. Network Info"
         echo "  4. Who is Online"
         echo "  5. Last Logged in Users"
-        echo "  6. Free & Used Memory Info"
-        echo "  7. Disk Usage" 
-        echo "  8. Exit" 
+        echo "  6. CPU Info" 
+        echo "  7. Free & Used Memory Info"
+        echo "  8. Disk Usage" 
+        echo "  9. Exit" 
 }
 
 #### Display header message #### 
@@ -128,6 +129,8 @@ function user_info(){
     
     pause 
 }
+
+### Display CPU info ### 
 
 #### Display used and free memory info ####
 
