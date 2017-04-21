@@ -194,7 +194,7 @@ function disk_space(){
 
 function read_input(){
     local c
-    read -p "Enter your choice [ 1-8 ]:  " c
+    read -p "Enter your choice [ 1-9 ]:  " c
     case $c in
         1) os_info ;;
         2) host_info ;;
@@ -206,7 +206,7 @@ function read_input(){
         8) disk_space;;
         9) echo "Ciao!"; exit 0 ;;
         *)
-            echo "Select an Option (1 to 8):  "
+            echo "Select an Option (1 to 9):  "
             pause
     esac 
 }
