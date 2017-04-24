@@ -13,13 +13,13 @@
 
 ############################################################
 # A note on comments in this script:                       # 
-#
+#                                                          # 
 # When you see a verbose command FOLLOWED BY #,            #
-# the content to the right of the # is the abridged version# 
+# the content TO THE RIGHT of the # is the abridged version# 
 # of same command.                                         # 
 #                                                          # 
 # When you see a command with a # BELOW the command,       #
-# the information to the right of the # usually            #
+# the information TO THE RIGHT of the # usually            #
 # describes  what the command above it does.               #
 ############################################################
 
@@ -38,6 +38,7 @@ function pause(){
 function show_menu(){
     date
     echo "------------------------------"
+    echo "  Bash System Info            " 
     echo "  Main Menu                   "
     echo "------------------------------"
         echo "  1. OS Info" 
@@ -86,7 +87,7 @@ function host_info(){
     echo "DNS Domain : $(hostname --domain)"                            # hostname -d 
     echo "Fully-qualified Domain Name (FQDN) : $(hostname --fqdn)"      # hostname -f 
     echo "Network Address (IP) : $(hostname --ip-address)"              # hostname -i 
-    echo "DNS name servers (DNS IP) : ${dnsips}"                            
+    echo "Domain Name Servers (DNS IP) : ${dnsips}"                            
     
     pause
 }
@@ -99,7 +100,7 @@ function net_info(){
     # devices=$(netstat -i | cut -d" " -f1 | egrep -v "Kernel|Iface|lo")
     
     write_header "Network Info"
-    echo "Total network interfaces found : 
+    echo "Total Network Interfaces Found : 
     $(wc --words <<<${devices})"                                        # $(wc --words <<<${devices})"
     
     echo "------------------------------"
@@ -113,7 +114,7 @@ function net_info(){
     netstat --numeric --route                                           # netstat -nr 
 
     echo "------------------------------"
-    echo "  Interface traffic info      "
+    echo "  Interface Traffic Info      "
     echo "------------------------------"
     netstat --interfaces                                                # netstat -i  
 
@@ -125,8 +126,8 @@ function net_info(){
 function user_info(){
     local cmd="$1"
     case "$cmd" in
-        who) write_header "Who is online? "; who --heading;;                # who -H 
-        last) write_header "Last 10 logged in users "; last -n 10 -a -d;;   # last -num 10 -a -d   
+        who) write_header "Who is Online? "; who --heading;;                # who -H 
+        last) write_header "Last 10 Logged in Users "; last -n 10 -a -d;;   # last -num 10 -a -d   
     esac
     
     pause 
@@ -141,7 +142,7 @@ function cpu_info(){
     lscpu |grep --ignore-case 'model name'
     lscpu |grep --ignore-case 'socket(s)'
     lscpu |grep --ignore-case 'core(s) per socket'
-    # Query lscpu for: `model name`, `sockets`, and `numb
+    # Query lscpu for: `model name`, `sockets`, and `number of cores per socket`
 
     pause
     
@@ -192,7 +193,7 @@ function disk_space(){
     pause 
 }
 
-#### Get input via the keyboard and make a decision using case..esac ####
+#### Get input via the keyboard and make a decision using case...esac ####
 
 function read_input(){
     local c
