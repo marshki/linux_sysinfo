@@ -13,9 +13,11 @@
 
 ############################################################
 # A note on comments in this script:                       # 
+#
 # When you see a verbose command FOLLOWED BY #,            #
 # the content to the right of the # is the abridged version# 
 # of same command.                                         # 
+#                                                          # 
 # When you see a command with a # BELOW the command,       #
 # the information to the right of the # usually            #
 # describes  what the command above it does.               #
