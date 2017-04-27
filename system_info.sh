@@ -165,7 +165,7 @@ function mem_info(){
     echo "------------------------------"
     echo " Top 10 Memory Eating Process "
     echo "------------------------------"
-    echo "${processes}" | head -11 |awk '{print $1, $2, $3, $4, $5, $6, $6, $7}'
+    echo "${processes}" | head -11 |awk '{print $1, $2, $3, $4, $5, $6, $7}'
     
     pause
 }
