@@ -14,12 +14,14 @@ function write_header(){
 #### Get info about Operating System ####
 
 function  os_info(){
-    local namevers=$(awk -F'[="]+' '/^(NAME|VERSION)=/{printf("%-17s: %s\n",$1,$2)}' /etc/os-release)  
+    # local namevers=$(awk -F'[="]+' '/^(NAME|VERSION)=/{printf("%-17s: %s\n",$1,$2)}' /etc/os-release)  
         
     write_header "System Info"
     echo "Operating System : $(uname --kernel-name)"                # uname -s 
     echo "Kernel Version   : $(uname --kernel-release)"             # uname -r 
-    printf '%s\n' "$namevers"
+    echo "Name             : $(cat /etc/*-release |grep -w "NAME="|sed 's/NAME=//g; s/"//g')"
+    echo "Version          : $()" 
+    #printf '%s\n' "$namevers"
 
     #echo ${namevers}
 }                                                                      
