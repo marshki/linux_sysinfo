@@ -20,8 +20,8 @@ function  os_info(){
     echo "Operating System : $(uname --kernel-name)"                # uname -s 
     echo "Kernel Version   : $(uname --kernel-release)"             # uname -r 
     echo "Name             : $(cat /etc/*-release |grep -w "NAME="|sed 's/NAME=//g; s/"//g')"
-    echo "Version          : $()" 
-    #printf '%s\n' "$namevers"
+    echo "Version          : $(cat /etc/*-release |grep -w "VERSION="|sed 's/VERSION=//g; s/"//g')"
+    # printf '%s\n' "$namevers"
 
     #echo ${namevers}
 }                                                                      
