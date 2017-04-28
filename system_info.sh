@@ -65,13 +65,12 @@ function write_header(){
 #### Get info about Operating System ####
 
 function  os_info(){
-    local namevers=$(awk -F'[="]+' '/^(NAME|VERSION)=/{printf("%-17s: %s\n",$1,$2)}' /etc/os-release)
-    # regexp on /etc/os-release to extract name and version of OS
 
     write_header "System Info"
     echo "OPERATING SYSTEM : $(uname --kernel-name)"                    # uname -s
     echo "KERNEL VERSION   : $(uname --kernel-release)"                 # uname -r
-    printf '%s\n' "$namevers"
+    echo "Name             : $(cat /etc/*-release |grep -w "NAME="   |sed 's/NAME=//g; s/"//g')"
+    echo "Version          : $(cat /etc/*-release |grep -w "VERSION="|sed 's/VERSION=//g; s/"//g')" 
         
     pause                                                               
 }
