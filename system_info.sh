@@ -67,10 +67,10 @@ function write_header(){
 function  os_info(){
 
     write_header "System Info"
-    echo "OPERATING SYSTEM : $(uname --kernel-name)"                    # uname -s
-    echo "KERNEL VERSION   : $(uname --kernel-release)"                 # uname -r
-    echo "Name             : $(cat /etc/*-release |grep -w "NAME="   |sed 's/NAME=//g; s/"//g')"
-    echo "Version          : $(cat /etc/*-release |grep -w "VERSION="|sed 's/VERSION=//g; s/"//g')" 
+    echo "OPERATING SYSTEM : $(uname --kernel-name)"                                                            # uname -s
+    echo "KERNEL VERSION   : $(uname --kernel-release)"                                                         # uname -r
+    echo "Name             : $(cat /etc/*-release |grep --word-regexp "NAME="   |sed 's/NAME=//g; s/"//g')"     # grep -w 
+    echo "Version          : $(cat /etc/*-release |grep --word-regexp "VERSION="|sed 's/VERSION=//g; s/"//g')"  # "" 
         
     pause                                                               
 }
@@ -138,10 +138,10 @@ function cpu_info(){
 
     write_header "CPU Info"
 
-    lscpu |grep --ignore-case 'model name'
-    lscpu |grep --ignore-case 'socket(s)'
-    lscpu |grep --ignore-case 'core(s) per socket'
-    # Query lscpu for: `model name`, `sockets`, and `number of cores per socket`
+    lscpu |grep --word-regexp 'Model name:'                             # grep -w 
+    lscpu |grep --word-regexp 'Socket(s)'                               # " 
+    lscpu |grep --word-regexp 'Core(s) per socket'                      # " 
+    # Query lscpu for: `Model name`, `Socket(s)`, and `Cores per socket:`
 
     pause
     
