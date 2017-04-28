@@ -19,11 +19,8 @@ function  os_info(){
     write_header "System Info"
     echo "Operating System : $(uname --kernel-name)"                # uname -s 
     echo "Kernel Version   : $(uname --kernel-release)"             # uname -r 
-    echo "Name             : $(cat /etc/*-release |grep -w "NAME="|sed 's/NAME=//g; s/"//g')"
-    echo "Version          : $(cat /etc/*-release |grep -w "VERSION="|sed 's/VERSION=//g; s/"//g')"
-    # printf '%s\n' "$namevers"
-
-    #echo ${namevers}
+    echo "Name             : $(cat /etc/*-release |grep --word-regexp "NAME="   |sed 's/NAME=//g; s/"//g')"     # grep -w 
+    echo "Version          : $(cat /etc/*-release |grep --word-regexp "VERSION="|sed 's/VERSION=//g; s/"//g')"  # grep -w 
 }                                                                      
     
 os_info 
