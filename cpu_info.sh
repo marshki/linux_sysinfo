@@ -15,10 +15,10 @@ function write_header(){
 function  cpu_info(){
     
     write_header "CPU Info"
-    lscpu |grep --ignore-case 'model name'
-    lscpu |grep --ignore-case 'socket(s)'          
-    lscpu |grep --ignore-case 'core(s) per socket'     
-    # Query lscpu for: `model name`, `sockets`, and `numb
+    lscpu |grep --word-regexp 'Model name:'                 # grep -w 
+    lscpu |grep --word-regexp 'Socket(s):'                  # ""
+    lscpu |grep --word-regexp 'Core(s) per socket:'         # ""
+    # Query lscpu for: `Model name`, `Sockets`, and `Core(s) per socket` 
 
     # pause 
 
