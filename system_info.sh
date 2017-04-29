@@ -65,12 +65,16 @@ function write_header(){
 #### Get info about Operating System ####
 
 function  os_info(){
+    local name=$(cat /etc/*-release    |grep --word-regexp "NAME="   |sed 's/NAME=//g; s/"//g')        # grep -w     
+    local version=$(cat /etc/*-release |grep --word-regexp "VERSION="|sed 's/VERSION=//g; s/"//g')  # ""  
 
     write_header "System Info"
     echo "OPERATING SYSTEM : $(uname --kernel-name)"                                                            # uname -s
     echo "KERNEL VERSION   : $(uname --kernel-release)"                                                         # uname -r
-    echo "NAME             : $(cat /etc/*-release |grep --word-regexp "NAME="   |sed 's/NAME=//g; s/"//g')"     # grep -w 
-    echo "VERSION          : $(cat /etc/*-release |grep --word-regexp "VERSION="|sed 's/VERSION=//g; s/"//g')"  # "" 
+    echo "NAME             : ${name}" 
+    echo "VERSION          : ${version}"
+    #echo "NAME             : $(cat /etc/*-release |grep --word-regexp "NAME="   |sed 's/NAME=//g; s/"//g')"     # grep -w 
+    #echo "VERSION          : $(cat /etc/*-release |grep --word-regexp "VERSION="|sed 's/VERSION=//g; s/"//g')"  # "" 
         
     pause                                                               
 }
