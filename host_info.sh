@@ -9,7 +9,8 @@ function host_info(){
     echo "DNS Domain                            : $(hostname --domain)"         # hostname -d
     echo "Fully-qualified Domain Name (FQDN)    : $(hostname --fqdn)"           # hostname -f
     echo "Network Address (IP)                  : $(hostname --ip-address)"     # hostname -i
-    echo "$(grep --extended-regexp --word-regexp 'search|nameserver' /etc/resolv.conf)"
+    echo "Domain Name Servers (DNS name)        : $(grep --word-regexp 'search' /etc/resolv.conf |sed 's/search //g')"  # grep -w 
+    echo "Domain Name Servers (DNS IPs)         : $(grep --word-regexp 'nameserver' /etc/resolv.conf |sed 's/nameserver //g')"  
 
     # pause
 }
