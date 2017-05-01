@@ -84,7 +84,7 @@ function host_info(){
     local dnsips=$(grep --word-regexp 'nameserver' /etc/resolv.conf  |sed 's/nameserver //g')   # "
    
     write_header "Hostname and DNS Info"
-    echo "Hostname                              : $(hostname --short)"                          #hostname -s 
+    echo "Hostname                              : $(hostname --short)"                          # hostname -s 
     echo "DNS Domain                            : $(hostname --domain)"                         # hostname -d 
     echo "Fully-qualified Domain Name (FQDN)    : $(hostname --fqdn)"                           # hostname -f 
     echo "Network Address (IP)                  : $(hostname --ip-address)"                     # hostname -i 
@@ -144,7 +144,7 @@ function cpu_info(){
     lscpu |grep --word-regexp 'Model name:'                             # grep -w 
     lscpu |grep --word-regexp 'Socket(s)'                               # " 
     lscpu |grep --word-regexp 'Core(s) per socket'                      # " 
-    # Query lscpu for: `Model name`, `Socket(s)`, and `Cores per socket:`
+    # Query lscpu for: `Model name`, `Socket(s)`, and `Cores per socket`
 
     pause
     
@@ -211,8 +211,9 @@ function read_input(){
         8) disk_space;;
         9) echo "Ciao!"; exit 0 ;;
         *)
-            echo "Select an Option (1 to 9):  "
-            pause
+           echo "Select an Option (1 to 9):  "
+
+           pause
     esac 
 }
 
