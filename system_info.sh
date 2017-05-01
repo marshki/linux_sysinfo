@@ -84,10 +84,10 @@ function host_info(){
     local dnsips=$(grep --word-regexp 'nameserver' /etc/resolv.conf  |sed 's/nameserver //g')   # "
    
     write_header "Hostname and DNS Info"
-    echo "Hostname                              : $(hostname --short)"                                                  # hostname -s 
-    echo "DNS Domain                            : $(hostname --domain)"                                                 # hostname -d 
-    echo "Fully-qualified Domain Name (FQDN)    : $(hostname --fqdn)"                                                   # hostname -f 
-    echo "Network Address (IP)                  : $(hostname --ip-address)"                                             # hostname -i 
+    echo "Hostname                              : $(hostname --short)"                          #hostname -s 
+    echo "DNS Domain                            : $(hostname --domain)"                         # hostname -d 
+    echo "Fully-qualified Domain Name (FQDN)    : $(hostname --fqdn)"                           # hostname -f 
+    echo "Network Address (IP)                  : $(hostname --ip-address)"                     # hostname -i 
     echo "Domain Name Servers (DNS name)        : ${dnsname}"    
     echo "Domain Name Servers (DNS IPs)         : ${dnsips}"
                            
