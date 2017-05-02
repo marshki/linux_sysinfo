@@ -1,13 +1,14 @@
 #!/bin/bash 
 
-OPTION=$(whiptail --title "Main Menu" --menu "Choose your option" 15 60 4 \
+OPTION=$(whiptail --title "Bash System Info" --menu "Select an option" 15 60 4 \
 "1." "OS Info" \
 "2." "Hostname & DNS Info" \
 "3." "Network Info" \
 "4." "Who is Online" \
 "5." "Last Logged in Users" \
-"6." "Free & Used Memory Info" \
-"7." "Disk Usage"  3>&1 1>&2 2>&3)
+"6." "CPU Info" \
+"7." "Free & Used Memory Info" \
+"8." "Disk Usage"  3>&1 1>&2 2>&3)
  
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
