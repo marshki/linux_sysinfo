@@ -24,7 +24,7 @@ function disk_space(){
     echo "------------------------------" 
     echo "   Top 10 Disk Eating Files   " 
     echo "------------------------------"     
-    echo "${largestfiles}" |sort --reverse --human | head --lines=10                # sort -rh | head -n 10
+    echo "${largestfiles}" | pv | sort --reverse --human | head --lines=10                # sort -rh | head -n 10
  
     # find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null | sort --reverse --human | head --lines=10 
     # find / -type f -exec du -Sh {} + 2>/dev/null | sort -rh | head -n 10
