@@ -174,6 +174,16 @@ function mem_info(){
 
 #### Display information on disk space usage ####
 
+############################################################
+# A note about Top 10 Disk Eating Files:                   #
+# This program is designed so that a non-root user can     #
+# access all functions.If run as non-root,                 #
+# you will be limited in what paths you will be able to    #
+# to search, thereby impacting your results.               #
+# If that's not acceptable, you can run this program with  #
+# elevated privileges.                                     # 
+############################################################
+
 function disk_space(){
     local largestfiles=$(find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null)
     # find largest files by disk space; output background noise to /dev/null 
