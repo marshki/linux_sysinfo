@@ -1,10 +1,12 @@
 #!/bin/bash 
 #Need to run as root 
 
+# TODO: It looks like pv waits for the find command to finish 
+# before it provides output--this makes it look like nothing 
+# is happening when going through large data sets 
 
 #### Display header message ####                                                                                                      
 # $1 - message                                                                                                                        
-                                                                                                                                      
 function write_header(){                                                                                                              
     local h="$@"                                                                                                                      
     echo "------------------------------"                                                                                             
