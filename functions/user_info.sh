@@ -1,4 +1,5 @@
 #!/bin/bash 
+# TODO: Function should work as a stadalone; it doesn't (FIX!!!)
 
 #### Display header message #### 
 # $1 - message 
