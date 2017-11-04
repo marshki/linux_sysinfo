@@ -1,4 +1,9 @@
 #!/bin/bash
+# Function to provide user feedback  
+
+function disk_use() { 
+    find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null
+} 
 
 function wait_message() { 
     echo -n "Please wait..."
@@ -9,4 +14,5 @@ function wait_message() {
     done
 } 
 
-wait_message 
+disk_use & 
+
