@@ -1,3 +1,7 @@
+#!/bin/bash
+# TODO: echo user input to reflect selection 
+
+
 #### Display on-screen menu ####
 
 function show_menu(){
