@@ -14,7 +14,7 @@ function write_header(){
 #### Describe function ####
 
 function(){
-
+    write_header "Function"
     # pause 
 }
 
