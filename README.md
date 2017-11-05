@@ -16,7 +16,7 @@ For the whole enchillada run as `root`:
 
 `bash system_info.sh`. 
 
-This will present you with a text-based menu from which you can make a selection: ![Alt text](https://github.com/marshki/bash_sys_info/blob/master/screen_grab.png "screen_grab.png")
+This will present you with a text-based menu from which you can make a selection and receive output: ![Alt text](https://github.com/marshki/bash_sys_info/blob/master/screen_grab.png "screen_grab.png")
  
 
 # TODO
