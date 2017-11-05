@@ -1,4 +1,7 @@
-#!/bin/bash 
+#!/bin/bash
+ 
+# TODO: Long-term goal if for whiptail to be integrated in to larger system_info.sh script
+
 
 OPTION=$(whiptail --title "Bash System Info" --menu "Select an option" 15 60 4 \
 "1." "OS Info" \
@@ -17,8 +20,7 @@ else
     echo "You chose Cancel."
 fi
 
-
-
+# NOTES ON WHIPTAIL -->
 
 #whiptail --title "Test Message Box" --msgbox "Create a message box with whiptail. Choose OK to continue." 10 60
 #whiptail --title "Menu example" --menu "Choose an option" 25 78 16 \
