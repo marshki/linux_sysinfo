@@ -36,4 +36,4 @@ First commit 2016.10.07
 
 # Acknowledgments 
 
-
+Vivek Gite attributed author of `grabsysinfo.sh` from which this project builds upon. 
