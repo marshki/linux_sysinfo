@@ -13,9 +13,10 @@ function write_header(){
 
 #### Describe function ####
 
-function(){
-    write_header "Function"
+template(){
+
+    write_header "Template"
     # pause 
 }
 
-function
+template
