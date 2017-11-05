@@ -12,6 +12,11 @@
 ############################################################
 
 ############################################################
+# This script builds on, and improves grabsysinfo.sh       #
+# attributed to Vivek Gite circa 2007.09.12.               #
+############################################################
+
+############################################################
 # A note on comments in this script:                       # 
 #                                                          # 
 # When you see a verbose command FOLLOWED BY #,            #
