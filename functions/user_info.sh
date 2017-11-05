@@ -1,6 +1,6 @@
 #!/bin/bash 
-# TODO: Function should work as a stadalone; it doesn't (FIX!!!)
-
+# TODO: Works as part of the entire program, should modify to stand on its own 
+ 
 #### Display header message #### 
 # $1 - message 
 
