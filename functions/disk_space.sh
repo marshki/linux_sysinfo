@@ -4,6 +4,7 @@
 # TODO: It looks like pv waits for the find command to finish 
 # before it provides output--this makes it look like nothing 
 # is happening when going through large data sets 
+# Can we pipe find to pv to get some feedback? 
 
 #### Display header message ####                                                                                                      
 # $1 - message                                                                                                                        
