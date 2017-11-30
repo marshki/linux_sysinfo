@@ -32,7 +32,8 @@ function read_input(){
         7) mem_info ;;
         8) disk_space;;
         9) printf "%s\n"  "Ciao!"; exit 0 ;;
-        *) printf "%s\n"  "Select an Option (1 to 9):  "
+        *) 
+           printf "%s\n"  "Select an Option (1 to 9):  "
            pause
     esac
 }
