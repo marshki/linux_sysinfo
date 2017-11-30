@@ -22,13 +22,13 @@ This will present you with a text-based menu from which you can make a selection
 # TODO
 
 - [ ] `disk_space` function needs to provide user with feedback. `find` command can take eons depending on disk usage, but verbose find is too noisy, and `pv` won't work utill find command completes.  
-- [ ] [Whiptail Menu](https://en.wikibooks.org/wiki/Bash_Shell_Scripting/Whiptail) integration (long-term goal)
 - [ ] Add "report" function to pull information and e-mail sysadmin? 
 - [ ] General code quality review & cleanup. 
 
 # History 
 
 First commit 2016.10.07
+
 Code review 2017.11.05 
 
 # License 
