@@ -6,9 +6,9 @@
 
 function write_header(){
     local h="$@"
-    echo "------------------------------"
-    echo "  ${h}"
-    echo "------------------------------"
+    printf "%s\n" "------------------------------"
+    printf "%s\n" "  ${h}"
+    printf "%s\n" "------------------------------"
 }
 
 #### Display list of users currently logged on & a list of recently logged in users ####
