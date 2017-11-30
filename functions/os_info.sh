@@ -5,9 +5,9 @@
 
 function write_header(){
     local h="$@"
-    echo "------------------------------"
-    echo "  ${h}"
-    echo "------------------------------"
+    printf "%s\n" "------------------------------"
+    printf "%s\n" "  ${h}"
+    printf "%s\n" "------------------------------"
 }
 
 #### Get info about Operating System ####
@@ -15,10 +15,10 @@ function write_header(){
 function  os_info(){
         
     write_header "System Info"
-    echo "Operating System : $(uname --kernel-name)"                # uname -s 
-    echo "Kernel Version   : $(uname --kernel-release)"             # uname -r
-    echo "Name             : $(cat /etc/*-release |grep --word-regexp "NAME="   |sed 's/NAME=//g; s/"//g')"
-    echo "Version          : $(cat /etc/*-release |grep --word-regexp "VERSION="|sed 's/VERSION=//g; s/"//g')" 
+    printf "%s\n" "Operating System : $(uname --kernel-name)"                # uname -s 
+    printf "%s\n" "Kernel Version   : $(uname --kernel-release)"             # uname -r
+    printf "%s\n" "Name             : $(cat /etc/*-release |grep --word-regexp "NAME="   |sed 's/NAME=//g; s/"//g')"
+    printf "%s\n" "Version          : $(cat /etc/*-release |grep --word-regexp "VERSION="|sed 's/VERSION=//g; s/"//g')" 
 
 }                                                                      
     
