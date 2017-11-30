@@ -5,9 +5,9 @@
 
 function write_header(){
     local h="$@"
-    echo "------------------------------"
-    echo "  ${h}"
-    echo "------------------------------"
+    printf "%s\n" "------------------------------"
+    printf "%s\n" "  ${h}"
+    printf "%s\n" "------------------------------"
 }
 
 #### Get info about Network Interface and Routing ####
@@ -18,22 +18,22 @@ function net_info(){
     # devices=$(netstat -i | cut -d" " -f1 | egrep -v "Kernel|Iface|lo")
     
     write_header "Network Info"
-    echo "Total Network Interfaces Found : 
+    printf "%s\n" "Total Network Interfaces Found : 
     $(wc --words <<<${devices})"                                        # $(wc --words <<<${devices})"
     
-    echo "------------------------------"
-    echo "  IP Addresses Info           "
-    echo "------------------------------"
+    printf "%s\n" "------------------------------"
+    printf "%s\n" "  IP Addresses Info           "
+    printf "%s\n" "------------------------------"
     ip -family inet address show                                        # ip -4 address show 
 
-    echo "------------------------------"
-    echo "  Network Routing             "
-    echo "------------------------------"
+    printf "%s\n" "------------------------------"
+    printf "%s\n" "  Network Routing             "
+    printf "%s\n" "------------------------------"
     netstat --numeric --route                                           # netstat -nr 
 
-    echo "------------------------------"
-    echo "  Interface Traffic Info      "
-    echo "------------------------------"
+    printf "%s\n" "------------------------------"
+    printf "%s\n" "  Interface Traffic Info      "
+    printf "%s\n" "------------------------------"
     netstat --interfaces                                                # netstat -i  
 
     # pause 
