@@ -10,9 +10,9 @@
 # $1 - message                                                                                                                        
 function write_header(){                                                                                                              
     local h="$@"                                                                                                                      
-    echo "------------------------------"                                                                                             
-    echo "  ${h}"                                                                                                                     
-    echo "------------------------------"                                                                                             
+    printf "%s\n" "------------------------------"                                                                                             
+    printf "%s\n" "  ${h}"                                                                                                                     
+    printf "%s\n" "------------------------------"                                                                                             
 } 
 
 # Get information about free and used disk space 
@@ -25,12 +25,12 @@ function disk_space(){
     write_header "Disk Usage" 
     df --human-readable --total | awk 'NR==1; END{print}'                           # df -h --total   
     
-    # echo "Retrieving largest files..."
+    # printf "%s" "Retrieving largest files..."
     
-    echo "------------------------------" 
-    echo "   Top 10 Disk Eating Files   " 
-    echo "------------------------------"     
-    echo "${largestfiles}" | pv | sort --reverse --human | head --lines=10                # sort -rh | head -n 10
+    printf "%s\n" "------------------------------" 
+    printf "%s\n" "   Top 10 Disk Eating Files   " 
+    printf "%s\n" "------------------------------"     
+    printf "%s\n" "${largestfiles}" | pv | sort --reverse --human | head --lines=10                # sort -rh | head -n 10
  
     # find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null | sort --reverse --human | head --lines=10 
     # find / -type f -exec du -Sh {} + 2>/dev/null | sort -rh | head -n 10
