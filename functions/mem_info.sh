@@ -6,9 +6,9 @@
 
 function write_header(){
     local h="$@"
-    echo "------------------------------"
-    echo "  ${h}"
-    echo "------------------------------"
+    printf "%s\n" "------------------------------"
+    printf "%s\n" "  ${h}"
+    printf "%s\n" "------------------------------"
 }
 
 #### Display used and free memory info ####
@@ -19,15 +19,15 @@ function mem_info(){
     write_header "Free & Used Memory "        
     free --giga --human                                                 # free -gh  
     
-    echo "------------------------------"
-    echo "  Virtual Memory Statistics   "
-    echo "------------------------------"
+    printf "%s\n" "------------------------------"
+    printf "%s\n" "  Virtual Memory Statistics   "
+    printf "%s\n" "------------------------------"
     vmstat
     
-    echo "------------------------------"
-    echo " Top 10 Memory Eating Process "
-    echo "------------------------------"
-    echo "${processes}" | head -11 |awk '{print $1, $2, $3, $4, $5, $6, $7}'
+    printf "%s\n" "------------------------------"
+    printf "%s\n" " Top 10 Memory Eating Process "
+    printf "%s\n" "------------------------------"
+    printf "%s\n" "${processes}" | head -11 |awk '{print $1, $2, $3, $4, $5, $6, $7}'
     
     # pause
 }
