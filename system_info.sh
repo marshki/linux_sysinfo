@@ -42,19 +42,19 @@ function pause(){
 
 function show_menu(){
     date
-    echo "------------------------------"
-    echo "  Bash System Info            " 
-    echo "  Main Menu                   "
-    echo "------------------------------"
-        echo "  1. OS Info" 
-        echo "  2. Hostname & DNS Info"
-        echo "  3. Network Info"
-        echo "  4. Who is Online"
-        echo "  5. Last Logged in Users"
-        echo "  6. CPU Info" 
-        echo "  7. Free & Used Memory Info"
-        echo "  8. Disk Usage" 
-        echo "  9. Exit" 
+    printf "%s\n" "------------------------------"
+    printf "%s\n" "  Bash System Info            " 
+    printf "%s\n" "  Main Menu                   "
+    printf "%s\n" "------------------------------"
+        printf "%s\n" "  1. OS Info" 
+        printf "%s\n" "  2. Hostname & DNS Info"
+        printf "%s\n" "  3. Network Info"
+        printf "%s\n" "  4. Who is Online"
+        printf "%s\n" "  5. Last Logged in Users"
+        printf "%s\n" "  6. CPU Info" 
+        printf "%s\n" "  7. Free & Used Memory Info"
+        printf "%s\n" "  8. Disk Usage" 
+        printf "%s\n" "  9. Exit" 
 }
 
 #### Display header message #### 
@@ -62,9 +62,9 @@ function show_menu(){
 
 function write_header(){
     local h="$@"
-    echo "------------------------------"
-    echo "  ${h}"
-    echo "------------------------------"
+    printf "%s\n" "------------------------------"
+    printf "%s\n" "  ${h}"
+    printf "%s\n" "------------------------------"
 }
 
 #### Get info about Operating System ####
@@ -74,10 +74,10 @@ function  os_info(){
     local version=$(cat /etc/*-release |grep --word-regexp "VERSION="|sed 's/VERSION=//g; s/"//g')     # ""  
 
     write_header "System Info"
-    echo "OPERATING SYSTEM : $(uname --kernel-name)"                                                            # uname -s
-    echo "KERNEL VERSION   : $(uname --kernel-release)"                                                         # uname -r
-    echo "NAME             : ${name}" 
-    echo "VERSION          : ${version}"
+    printf "%s\n" "OPERATING SYSTEM : $(uname --kernel-name)"                                                            # uname -s
+    printf "%s\n" "KERNEL VERSION   : $(uname --kernel-release)"                                                         # uname -r
+    printf "%s\n" "NAME             : ${name}" 
+    printf "%s\n" "VERSION          : ${version}"
         
     pause                                                               
 }
@@ -89,12 +89,12 @@ function host_info(){
     local dnsips=$(grep --word-regexp 'nameserver' /etc/resolv.conf  |sed 's/nameserver //g')   # "
    
     write_header "Hostname and DNS Info"
-    echo "Hostname                              : $(hostname --short)"                          # hostname -s 
-    echo "DNS Domain                            : $(hostname --domain)"                         # hostname -d 
-    echo "Fully-qualified Domain Name (FQDN)    : $(hostname --fqdn)"                           # hostname -f 
-    echo "Network Address (IP)                  : $(hostname --ip-address)"                     # hostname -i 
-    echo "Domain Name Servers (DNS name)        : ${dnsname}"    
-    echo "Domain Name Servers (DNS IPs)         : ${dnsips}"
+    printf "%s\n" "Hostname                              : $(hostname --short)"                          # hostname -s 
+    printf "%s\n" "DNS Domain                            : $(hostname --domain)"                         # hostname -d 
+    printf "%s\n" "Fully-qualified Domain Name (FQDN)    : $(hostname --fqdn)"                           # hostname -f 
+    printf "%s\n" "Network Address (IP)                  : $(hostname --ip-address)"                     # hostname -i 
+    printf "%s\n" "Domain Name Servers (DNS name)        : ${dnsname}"    
+    printf "%s\n" "Domain Name Servers (DNS IPs)         : ${dnsips}"
                            
     pause
 }
@@ -107,22 +107,22 @@ function net_info(){
     # devices=$(netstat -i | cut -d" " -f1 | egrep -v "Kernel|Iface|lo")
     
     write_header "Network Info"
-    echo "Total Network Interfaces Found : 
+    printf "%s\n" "Total Network Interfaces Found : 
     $(wc --words <<<${devices})"                                        # $(wc --words <<<${devices})"
     
-    echo "------------------------------"
-    echo "  IP Addresses Info           "
-    echo "------------------------------"
+    printf "%s\n" "------------------------------"
+    printf "%s\n" "  IP Addresses Info           "
+    printf "%s\n" "------------------------------"
     ip -family inet address show                                        # ip -4 address show 
 
-    echo "------------------------------"
-    echo "  Network Routing             "
-    echo "------------------------------"
+    printf "%s\n" "------------------------------"
+    printf "%s\n" "  Network Routing             "
+    printf "%s\n" "------------------------------"
     netstat --numeric --route                                           # netstat -nr 
 
-    echo "------------------------------"
-    echo "  Interface Traffic Info      "
-    echo "------------------------------"
+    printf "%s\n" "------------------------------"
+    printf "%s\n" "  Interface Traffic Info      "
+    printf "%s\n" "------------------------------"
     netstat --interfaces                                                # netstat -i  
 
     pause 
@@ -164,15 +164,15 @@ function mem_info(){
     write_header "Free & Used Memory "        
     free --giga --human                                                 # free -gh  
     
-    echo "------------------------------"
-    echo "  Virtual Memory Statistics   "
-    echo "------------------------------"
+    printf "%s\n" "------------------------------"
+    printf "%s\n" "  Virtual Memory Statistics   "
+    printf "%s\n" "------------------------------"
     vmstat
     
-    echo "------------------------------"
-    echo " Top 10 Memory Eating Process "
-    echo "------------------------------"
-    echo "${processes}" | head -11 |awk '{print $1, $2, $3, $4, $5, $6, $7}'
+    printf "%s\n" "------------------------------"
+    printf "%s\n" " Top 10 Memory Eating Process "
+    printf "%s\n" "------------------------------"
+    printf "%s\n" "${processes}" | head -11 |awk '{print $1, $2, $3, $4, $5, $6, $7}'
     
     pause
 }
@@ -197,12 +197,12 @@ function disk_space(){
     write_header "Disk Usage"
     df --human-readable --total | awk 'NR==1; END{print}'                           # df -h --total   
 
-    # echo "Retrieving largest files..."
+    # printf "%s" "Retrieving largest files..."
 
-    echo "------------------------------" 
-    echo "   Top 10 Disk Eating Files   " 
-    echo "------------------------------"     
-    echo "${largestfiles}" |sort --reverse --human | head --lines=10                # sort -rh | head -n 10
+    printf "%s\n" "------------------------------" 
+    printf "%s\n" "   Top 10 Disk Eating Files   " 
+    printf "%s\n" "------------------------------"     
+    printf "%s\n" "${largestfiles}" |sort --reverse --human | head --lines=10                # sort -rh | head -n 10
 
     # find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null | sort --reverse --human | head --lines=10 
     # find / -type f -exec du -Sh {} + 2>/dev/null | sort -rh | head -n 10
@@ -224,9 +224,9 @@ function read_input(){
         6) cpu_info ;; 
         7) mem_info ;;
         8) disk_space;;
-        9) echo "Ciao!"; exit 0 ;;
+        9) printf "%s\n" "Ciao!"; exit 0 ;;
         *)
-           echo "Select an Option (1 to 9):  "
+           printf "%s\n" "Select an Option (1 to 9):  "
 
            pause
     esac 
