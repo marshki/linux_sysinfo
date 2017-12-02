@@ -74,8 +74,8 @@ function  os_info(){
     local version=$(cat /etc/*-release |grep --word-regexp "VERSION="|sed 's/VERSION=//g; s/"//g')     # ""  
 
     write_header "System Info"
-    printf "%s\n" "OPERATING SYSTEM : $(uname --kernel-name)"                                                            # uname -s
-    printf "%s\n" "KERNEL VERSION   : $(uname --kernel-release)"                                                         # uname -r
+    printf "%s\n" "OPERATING SYSTEM : $(uname --kernel-name)"                                          # uname -s
+    printf "%s\n" "KERNEL VERSION   : $(uname --kernel-release)"                                       # uname -r
     printf "%s\n" "NAME             : ${name}" 
     printf "%s\n" "VERSION          : ${version}"
         
@@ -205,7 +205,7 @@ function disk_space(){
     printf "%s\n" "------------------------------" 
     printf "%s\n" "   Top 10 Disk Eating Files   " 
     printf "%s\n" "------------------------------"     
-    printf "%s\n" "${largestfiles}" |sort --reverse --human | head --lines=10                # sort -rh | head -n 10
+    printf "%s\n" "${largestfiles}" |sort --reverse --human | head --lines=10       # sort -rh | head -n 10
 
     # find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null | sort --reverse --human | head --lines=10 
     # find / -type f -exec du -Sh {} + 2>/dev/null | sort -rh | head -n 10
