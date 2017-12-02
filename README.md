@@ -1,14 +1,12 @@
-# Bash System Info  
+# Bash System Info 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5a3b5bbe370e409a96a0de70b1c95c31)](https://www.codacy.com/app/marshki/bash_sys_info?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=marshki/bash_sys_info&amp;utm_campaign=Badge_Grade)
+ 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hyperium/hyper/master/LICENSE)
 
 Bash script to extract useful information from a `Linux` host using a menu-driven interface.
 This script builds on, and improves *grabsysinfo.sh* attributed to Vivek Gite circa 2007.09.12. 
 
 Tested to run on: Centos 7, Debian 8 & Ubuntu 16.04, though it should work on other distros as well. 
-
-** UPDATE (2017.11.05): ** 
-
-Still a work in progress, but can be used as is.  
 
 # Getting Started 
 
