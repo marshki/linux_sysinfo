@@ -18,15 +18,16 @@ function write_header(){
 # Get information about free and used disk space 
 
 function disk_space(){
-    local largestfiles=$(find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null) 
+    local largestfiles=$(find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null)
+    
     # find largest files by disk space; output background noise to /dev/null 
     # find / -type f -exec du -Sh {} + 2>/dev/null
-         
+    
+    printf "%s\n" "Searching..." 
+     
     write_header "Disk Usage" 
     df --human-readable --total | awk 'NR==1; END{print}'                           # df -h --total   
-    
-    # printf "%s" "Retrieving largest files..."
-    
+        
     printf "%s\n" "------------------------------" 
     printf "%s\n" "   Top 10 Disk Eating Files   " 
     printf "%s\n" "------------------------------"     
