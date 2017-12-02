@@ -190,8 +190,11 @@ function mem_info(){
 ############################################################
 
 function disk_space(){
-    local largestfiles=$(find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null)
-    # find largest files by disk space; output background noise to /dev/null 
+
+    printf "%s\n" "Processing ..."
+
+    local largestfiles=$(find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null |pv )
+    # find largest files by disk space; pv to provide feedback 
     # find / -type f -exec du -Sh {} + 2>/dev/null
 
     write_header "Disk Usage"
