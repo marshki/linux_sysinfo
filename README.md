@@ -17,8 +17,9 @@ This will present you with a text-based menu from which you can make a selection
  
 # TODO
 - [ ] Add `pv` check in CentOS/Debian/Ubuntu. 
-- [ ] Find correct way to list package dependency in Bash, then add to repo. 
-- [For CentOS] (yum --enablerepo=extras install epel-release) 
+- [ ] Find correct way to list package dependency in Bash, then add to this repo.  
+- For CentOS 
+  `yum --enablerepo=extras install epel-release` 
   `yum -y install pv`  
 - For Debian/Ubuntu: 
   `apt-get -y install pv` 
