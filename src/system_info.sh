@@ -28,6 +28,15 @@
 # describes  what the command above it does.               #
 ############################################################
 
+#### Check if pv is installed; exit if not. ####
+
+function pv_check(){
+    if ! which pv &> /dev/null; then 
+    printf "%s\n" "Please install pv or make sure it is in your path." 
+    exit 
+    fi 
+} 
+
 #### Display pause prompt ####
 # Suspend processing of script; display message prompting user to press [Enter] key to continue
 # $1-> Message (optional)
