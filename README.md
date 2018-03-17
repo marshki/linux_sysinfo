@@ -13,16 +13,11 @@ For the whole enchillada run as `root`:
 
 `bash system_info.sh`. 
 
-This will present you with a text-based menu from which you can make a selection and receive output: ![Alt text](https://github.com/marshki/bash_sys_info/blob/master/docs/screen_grab.png "screen_grab.png")
+which will present a text-based menu from which you can make a selection and receive output: ![Alt text](https://github.com/marshki/bash_sys_info/blob/master/docs/screen_grab.png "screen_grab.png")
  
 # TODO
-- [ ] Add `pv` check in CentOS/Debian/Ubuntu. 
-- [ ] Find correct way to list package dependency in Bash, then add to this repo.  
-- For CentOS 
-  `yum --enablerepo=extras install epel-release` 
-  `yum -y install pv`  
-- For Debian/Ubuntu: 
-  `apt-get -y install pv` 
+
+[ ] General code review and clean up.  
 
 # History 
 
