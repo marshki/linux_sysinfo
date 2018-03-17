@@ -16,6 +16,10 @@ Then, for the whole enchillada run as `root`:
 `bash system_info.sh`. 
 
 which will present a text-based menu from which you can make a selection and receive output: ![Alt text](https://github.com/marshki/bash_sys_info/blob/master/docs/screen_grab.png "screen_grab.png")
+
+GUI Output   | CLI Output
+----------   | ----------
+![Alt text](https://github.com/marshki/bash_sys_info/blob/master/docs/screen_grab.png "Deb_think") | ![Alt text](https://github.com/marshki/bash_sys_info/blob/master/docs/screen_grab_2.png "Deb_pi")
  
 # TODO
 
