@@ -9,7 +9,9 @@ Tested to run on: Centos 7, Debian 8 & Ubuntu 16.04, though it should work on ot
 
 # Getting Started 
 
-For the whole enchillada run as `root`: 
+First, see: [REQUIREMENTS.md](https://github.com/marshki/bash_sys_info/blob/master/REQUIREMENTS.md)
+
+Then, for the whole enchillada run as `root`: 
 
 `bash system_info.sh`. 
 
