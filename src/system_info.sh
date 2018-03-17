@@ -249,7 +249,10 @@ function read_input(){
 trap '' SIGINT SIGQUIT SIGTSTP
 
 #### Main logic ####
-# Display menu; wait for user input 
+# Run pv check, then 
+# display menu and wait for user input 
+
+pv_check 
 while true 
 do 
     clear 
