@@ -33,7 +33,7 @@
 function pv_check(){
     if ! which pv &> /dev/null; then 
     printf "%s\n" "Please install pv or make sure it is in your path." 
-    exit 
+    exit 1
     fi 
 } 
 
