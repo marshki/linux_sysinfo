@@ -24,7 +24,7 @@ Debian 8     | Debian 8 pi
 # TODO
 
 [ ] General code review and clean up.  
-[ ] Test on: Debian 9, Fedora 26 & 27 27, Ubuntu 18.04, 
+[ ] Test on: Debian 9, Fedora 26 & 27, Ubuntu 18.04.  
 
 # History 
 
