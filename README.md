@@ -5,9 +5,8 @@
 Bash script to extract useful information from a `Linux` host using a menu-driven interface.
 This script builds on, and improves *grabsysinfo.sh* attributed to Vivek Gite circa 2007.09.12. 
 
-Tested to run on: 
 Operating System | Tested to Work  
----------------------------------
+-----------------|---------------
 Centos 7         | Y
 Debian 8         | Y 
 Debian 9         | Y 
