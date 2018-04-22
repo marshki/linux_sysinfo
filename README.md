@@ -3,7 +3,7 @@
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hyperium/hyper/master/LICENSE)
 
 Bash script extracts useful information from a `Linux` host using a menu-driven interface.
-This script builds improves upon *grabsysinfo.sh* attributed to Vivek Gite circa 2007.09.12.
+This script builds upon *grabsysinfo.sh* attributed to Vivek Gite circa 2007.09.12.
 
 Test status: 
 
@@ -12,8 +12,8 @@ Operating System | Tested to Work
 Centos 7         | Y
 Debian 8         | Y 
 Debian 9         | Y 
-Fedora 24        | N
-Fedora 25        | N
+Fedora 26        | N
+Fedora 27        | N
 Ubuntu 16.04     | Y 
 Ubuntu 18.04     | N
 
@@ -34,7 +34,7 @@ Debian 8     | Debian 8 pi
 # TODO
 
 [ ] General code review and clean up.  
-[ ] Test on: Debian 9, Fedora 26 & 27, Ubuntu 18.04.  
+[ ] Test on: Fedora 26 & 27, Ubuntu 18.04.   
 
 # History 
 
