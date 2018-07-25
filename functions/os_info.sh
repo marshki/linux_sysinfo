@@ -8,20 +8,34 @@ write_header() {
   printf "%s\\n" "$@"
 }
 
+write_info(){
+  local name=$1; shift; 
+  printf "%s\\n""$name"
+  printf "%s\\n" "$@"
+} 
+
 #### Get info about Operating System ####
 
 function  os_info(){
   local os=$(uname --kernel-name)
   local kernel=$(uname --kernel-release)
-  local name=$()        
-  local version=$()    
-
-printf "%s\n" "Operating System : $(uname --kernel-name)"                # uname -s 
-printf "%s\n" "Kernel Version   : $(uname --kernel-release)"             # uname -r
-printf "%s\n" "Name             : $(cat /etc/*-release |grep --word-regexp "NAME="   |sed 's/NAME=//g; s/"//g')"
-printf "%s\n" "Version          : $(cat /etc/*-release |grep --word-regexp "VERSION="|sed 's/VERSION=//g; s/"//g')" 
+  local name=$(awk '/^NAME=/' /etc/*-release |cut --delimiter=\" --field=2)        
+  local version=$(awk '/^VERSION=/' /etc/*-release |cut --delimiter=\" --field=2)    
 
   write_header "System Info" "$os_info" 
-}                                                                      
-# awk -F= '{print $2}' /etc/*release    
+
+  write_info "Operating System: " "$os"
+  write_info "Kernel Version: " "$kernel"
+  write_info "Name: " "$name"
+  write_info "Version: " "$version"
+
+
+
+
+  #printf "%s\\n" "Operating System : ${os}"                
+  #printf "%s\\n" "Kernel Version   : ${kernel}"  
+  #printf "%s\\n" "Name             : ${name}"  
+  #printf "%s\\n" "Version          : ${version}"
+}
+
 os_info 
