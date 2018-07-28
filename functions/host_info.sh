@@ -1,28 +1,68 @@
-#!/bin/bash 
+#!/bin/bash
+# Retrieve host & DNS info 
+ 
+#### Print header ####
 
-#### Display header message ####                                                                                                      
-# $1 - message                                                                                                                        
-                                                                                                                                      
-function write_header(){                                                                                                              
-    local h="$@"                                                                                                                      
-    printf "%s\n" "------------------------------"                                                                                             
-    printf "%s\n" "  ${h}"                                                                                                                     
-    printf "%s\n" "------------------------------"                                                                                             
+write_header() {
+  local name=$1; shift;
+  printf "%s""--------------------\\n$name%s\\n--------------------\\n"
+  printf "%s" "$@"
 }
 
-# Get information about hostname 
+#### Print info ####
 
-function host_info(){
-
-    write_header "Hostname and DNS Info"
-    printf "%s\n" "Hostname                              : $(hostname --short)"          # hostname -s
-    printf "%s\n" "DNS Domain                            : $(hostname --domain)"         # hostname -d
-    printf "%s\n" "Fully-qualified Domain Name (FQDN)    : $(hostname --fqdn)"           # hostname -f
-    printf "%s\n" "Network Address (IP)                  : $(hostname --ip-address)"     # hostname -i
-    printf "%s\n" "Domain Name Servers (DNS name)        : $(grep --word-regexp 'search' /etc/resolv.conf |sed 's/search //g')"  # grep -w 
-    printf "%s\n" "Domain Name Servers (DNS IPs)         : $(grep --word-regexp 'nameserver' /etc/resolv.conf |sed 's/nameserver //g')"  
-
-    # pause
+write_info() {
+  local name=$1; shift;
+  printf "%s""$name%s"
+  printf "%s\\n" "$@"
 }
+
+#### Get info about host & DNS ####
+
+host_name() { 
+  local host=$(hostname --short) 
+  write_info "Hostname: ${host}" 
+}
+
+dns_domain() { 
+  local dns=$(hostname --domain)
+  write_info "DNS Domain: ${dns}" 
+} 
+
+fully_qualified() {
+  local fqdn=$(hostname --fqdn) 
+  write_info "Fully-qualified Domain Name: ${fqdn}"
+} 
+
+ip_address() { 
+  local ip=$(hostname --ip-address) 
+  write_info "Network Address (IP): ${ip}"
+} 
+
+dns_name() { 
+  local search=$()
+  write_info "Domain Name Servers (DNS name): ${search}"
+} 
+
+dns_ips() { 
+  local name_serv=$()
+  write_info "Domain Name Servers (DNS IPs): ${name_serv}"
+} 
+
+host_info() { 
+
+  write_header "HOSTNAME & DNS INFO" "${host_info}"
+
+  host_name
+  dns_domain
+  fully_qualified
+  ip_address
+} 
+
+
+#    printf "%s\n" "Domain Name Servers (DNS name)        : 
+#$(grep --word-regexp 'search' /etc/resolv.conf |sed 's/search //g')"  # grep -w 
+#    printf "%s\n" "Domain Name Servers (DNS IPs)         : 
+#$(grep --word-regexp 'nameserver' /etc/resolv.conf |sed 's/nameserver //g')"  
 
 host_info
