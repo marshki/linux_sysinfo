@@ -1,46 +1,55 @@
 #!/bin/bash 
+# Retrieve kernel and OS info
 
-#### Display header message ####
-
-os_values=(
-"Operating System: " 
-"Kernel Version: " 
-"Name: " 
-"Version: "
-)
-
+#### Print header ####
 
 write_header() {
   local name=$1; shift;
-  printf "%s\\n""--------------------\\n$name%s\\n--------------------\\n"
-  printf "%s\\n" "$@"
+  printf "%s""--------------------\\n$name%s\\n--------------------\\n"
+  printf "%s" "$@"
 }
 
-write_info(){
+#### Print info #### 
+
+write_info() {
   local name=$1; shift; 
-  printf "%s\\n""$name"
+  printf "%s""$name%s"
   printf "%s\\n" "$@"
 } 
 
 #### Get info about Operating System ####
 
-function  os_info(){
-  local os=$(uname --kernel-name)
-  local kernel=$(uname --kernel-release)
-  local name=$(awk '/^NAME=/' /etc/*-release |cut --delimiter=\" --field=2)        
-  local version=$(awk '/^VERSION=/' /etc/*-release |cut --delimiter=\" --field=2)    
+kernel_name() {
+  # kernel name 
+  local kern=$(uname --kernel-name)
+  write_info "Kernel Name: ${kern}" 
+} 
 
-  write_header "System Info" "$os_info" 
+kernel_release	() { 
+  # kernel release 
+  local kernr=$(uname --kernel-release)
+  write_info "Kernel Release: ${kernr}" 
+} 
 
-  write_info "${os_values[0]}" "$os"   
-  write_info "${os_values[1]}" "$kernel"
-  write_info "${os_values[2]}" "$name"
-  write_info "${os_values[3]}" "$version"
+os_name() {
+  # relase name  
+  local name=$(awk '/^NAME=/' /etc/*-release |cut --delimiter=\" --field=2)
+  write_info "OS Name: ${name}" 
+}  
 
-  #printf "%s\\n" "Operating System : ${os}"                
-  #printf "%s\\n" "Kernel Version   : ${kernel}"  
-  #printf "%s\\n" "Name             : ${name}"  
-  #printf "%s\\n" "Version          : ${version}"
-}
+os_version() {
+  # release version
+  local version=$(awk '/^VERSION=/' /etc/*-release |cut --delimiter=\" --field=2)
+  write_info "OS Version: ${version}" 
+} 
+
+os_info() { 
+  write_header "SYSTEM INFO" "$os_info" 
+  
+  kernel_name
+  kernel_release 
+  os_name
+  os_version
+} 
 
 os_info 
