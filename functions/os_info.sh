@@ -1,5 +1,5 @@
 #!/bin/bash 
-# Retrieve kernel and OS info
+# Retrieve kernel and operating system info
 
 #### Print header ####
 
@@ -17,7 +17,7 @@ write_info() {
   printf "%s\\n" "$@"
 } 
 
-#### Get info about Operating System ####
+#### Get info about OS ####
 
 kernel_name() {
   # kernel name 
