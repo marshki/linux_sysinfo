@@ -1,6 +1,8 @@
 #!/bin/bash 
 # Retrieve kernel and operating system info
 
+# TODO: Clarify local variables (do they need 'local', or is entry in function enough?) 
+
 #### Print header ####
 
 write_header() {
