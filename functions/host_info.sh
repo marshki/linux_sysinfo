@@ -61,8 +61,11 @@ host_info() {
 
 
 #    printf "%s\n" "Domain Name Servers (DNS name)        : 
-#$(grep --word-regexp 'search' /etc/resolv.conf |sed 's/search //g')"  # grep -w 
+# OLD--> $(grep --word-regexp 'search' /etc/resolv.conf |sed 's/search //g')"  # grep -w 
+# NEW--> $(awk '/^search/ {print $2}' /etc/resolv.conf) 
+
 #    printf "%s\n" "Domain Name Servers (DNS IPs)         : 
-#$(grep --word-regexp 'nameserver' /etc/resolv.conf |sed 's/nameserver //g')"  
+# OLD--> $(grep --word-regexp 'nameserver' /etc/resolv.conf |sed 's/nameserver //g')"  
+# NEW--> $(awk '/^nameserver/ {print $2}' /etc/resolv.conf)
 
 host_info
