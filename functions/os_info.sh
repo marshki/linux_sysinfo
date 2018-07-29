@@ -44,6 +44,7 @@ os_version() {
 } 
 
 os_info() { 
+  # wrapper function
   write_header "SYSTEM INFO" "$os_info" 
   
   kernel_name
