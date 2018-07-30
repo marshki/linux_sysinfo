@@ -1,16 +1,43 @@
-#!/bin/bash 
+#!/bin/bash
+# Retrieve info about network interfaces & routing 
 
-#### Display header message #### 
-# $1 - message 
+#### Print header ####
 
-function write_header(){
-    local h="$@"
-    printf "%s\n" "------------------------------"
-    printf "%s\n" "  ${h}"
-    printf "%s\n" "------------------------------"
+write_header() {
+  local name=$1; shift;
+  printf "%s""--------------------\\n$name%s\\n--------------------\\n"
+  printf "%s" "$@"
 }
 
-#### Get info about Network Interface and Routing ####
+#### Print info ####
+
+write_info() {
+  local name=$1; shift;
+  printf "%s""$name%s"
+  printf "%s\\n" "$@"
+}
+
+#### Net Info ####
+
+ip_add_info() {
+  local ip_add=$(ip --family inet address show)
+  write_info "IP Address Info: ${ip_add}"  
+} 
+
+network_routing() {
+  local route=$(netstat --numeric --route)
+  write_info "Network Routing: ${traffic}" 
+} 
+
+interface_traffic() {
+  local traffic=$(netstat --interfaces)
+  write_info "Interface Traffic Info: ${traffic}" 
+} 
+
+net_info() {
+} 
+
+
 
 function net_info(){
     local devices=$(netstat --interfaces | cut --delimiter=" " --fields=1 | egrep --invert-match "Kernel|Iface|lo")   
