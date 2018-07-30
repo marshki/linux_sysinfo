@@ -19,6 +19,9 @@ write_info() {
 
 #### Net Info ####
 
+network_interfaces() { 
+} 
+
 ip_add_info() {
   local ip_add=$(ip --family inet address show)
   write_info "IP Address Info: ${ip_add}"  
