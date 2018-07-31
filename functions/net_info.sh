@@ -2,8 +2,8 @@
 # Retrieve info about network interfaces & routing 
 
 # TODO 
-# Clarify what each function is to do 
-# Can the native tool do what we want without the need to use regexp? 
+# Fix output for readability 
+
 
 #### Print header ####
 
@@ -24,56 +24,41 @@ write_info() {
 #### Net Info ####
 
 network_interfaces() { 
-} 
+  # Display number of network interfaces 
+
+  local devices=$(ip -oneline link show |wc --lines) 
+  write_info "Total Network Interfaces Found: ${devices}"  	
+}
 
 ip_add_info() {
+  # Display the IP protocol addresses
+
   local ip_add=$(ip --family inet address show)
   write_info "IP Address Info: ${ip_add}"  
 } 
 
 network_routing() {
-  local route=$(netstat --numeric --route)
+  # Display the IP routing table  
+
+  local route=$(netstat --route --numeric)
   write_info "Network Routing: ${traffic}" 
 } 
 
 interface_traffic() {
+  # Display status of interfaces on the network 
+
   local traffic=$(netstat --interfaces)
   write_info "Interface Traffic Info: ${traffic}" 
 } 
 
 net_info() {
+  # wrapper function 
+  write_header "NETWORK INFO" "$net_info" 
+
+  network_interfaces
   ip_add_info
   network_routing
   interface_traffic
 } 
-
-
-
-function net_info(){
-    local devices=$(netstat --interfaces | cut --delimiter=" " --fields=1 | egrep --invert-match "Kernel|Iface|lo")   
-    # regex netstat to list network interfaces 
-    # devices=$(netstat -i | cut -d" " -f1 | egrep -v "Kernel|Iface|lo")
-    
-    write_header "Network Info"
-    printf "%s\n" "Total Network Interfaces Found : 
-    $(wc --words <<<${devices})"                                        # $(wc --words <<<${devices})"
-    
-    printf "%s\n" "------------------------------"
-    printf "%s\n" "  IP Addresses Info           "
-    printf "%s\n" "------------------------------"
-    ip -family inet address show                                        # ip -4 address show 
-
-    printf "%s\n" "------------------------------"
-    printf "%s\n" "  Network Routing             "
-    printf "%s\n" "------------------------------"
-    netstat --numeric --route                                           # netstat -nr 
-
-    printf "%s\n" "------------------------------"
-    printf "%s\n" "  Interface Traffic Info      "
-    printf "%s\n" "------------------------------"
-    netstat --interfaces                                                # netstat -i  
-
-    # pause 
-}
-
+ 
 net_info
