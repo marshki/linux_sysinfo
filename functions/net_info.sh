@@ -2,7 +2,7 @@
 # Retrieve info about network interfaces & routing 
 
 # TODO 
-# Fix output for readability 
+# Fix output for readability--this is an aesthetic & functional issue 
 
 
 #### Print header ####
