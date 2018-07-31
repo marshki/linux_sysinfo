@@ -41,7 +41,7 @@ network_routing() {
   # Display the IP routing table  
 
   local route=$(netstat --route --numeric)
-  write_info "Network Routing: ${traffic}" 
+  write_info "Network Routing: ${route}" 
 } 
 
 interface_traffic() {
