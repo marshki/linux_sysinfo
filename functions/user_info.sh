@@ -1,4 +1,6 @@
 #!/bin/bash 
+
+# TODO: Refactor 
 # TODO: Works as part of the entire program, should modify to stand on its own 
  
 #### Display header message #### 
