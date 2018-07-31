@@ -1,6 +1,10 @@
 #!/bin/bash
 # Retrieve info about network interfaces & routing 
 
+# TODO 
+# Clarify what each function is to do 
+# Can the native tool do what we want without the need to use regexp? 
+
 #### Print header ####
 
 write_header() {
@@ -38,6 +42,9 @@ interface_traffic() {
 } 
 
 net_info() {
+  ip_add_info
+  network_routing
+  interface_traffic
 } 
 
 
