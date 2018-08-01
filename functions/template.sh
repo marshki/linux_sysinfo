@@ -1,22 +1,36 @@
-#!/bin/bash 
-#Template for creation of header and function 
+#!/bin/bash
+# Template for the creation of header and print info  
 
-#### Display header message #### 
-# $1 - message 
+#### Print header ####
 
-function write_header(){
-    local h="$@"
-    printf "%s\n" "------------------------------"
-    printf "%s\n" "  ${h}"
-    printf "%s\n" "------------------------------"
+write_header() {
+  local name=$1; shift;
+  printf "%s""--------------------\\n$name%s\\n--------------------\\n"
+  printf "%s" "$@"
+}
+
+#### Print info ####
+
+write_info() {
+  local name=$1; shift;
+  printf "%s""$name%s"
+  printf "%s\\n" "$@"
 }
 
 #### Describe function ####
 
-template(){
+sum_function() {
+  # Sum description 
 
-    write_header "Template"
-    # pause 
+  local summy=$(printf "%s\\n" "I do something!!!") 
+  write_info "Print Some Function's Result: ${summy}"
+}
+
+template() { 
+  # wrapper function 
+
+  write_header "SOME COOL STUFF" "${template}" 
+  sum_function     
 }
 
 template
