@@ -1,6 +1,9 @@
 #!/bin/bash
 
 #### Display a list of recently logged in users ####
+
+# TODO: fix --> layout (aesthetic and functionality) <--
+
  
 #### Print header ####
 
