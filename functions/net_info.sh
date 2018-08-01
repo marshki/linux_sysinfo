@@ -3,7 +3,7 @@
 
 # TODO 
 # Fix output for readability--this is an aesthetic & functional issue 
-
+# 08.01.2018 will revisit after refactoring other functions in this dir
 
 #### Print header ####
 
