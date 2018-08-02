@@ -1,14 +1,28 @@
 #!/bin/bash 
-#Template for creation of header and function 
 
-#### Display header message #### 
-# $1 - message 
+#### Print header ####
 
-function write_header(){
-    local h="$@"
-    printf "%s\n" "------------------------------"
-    printf "%s\n" "  ${h}"
-    printf "%s\n" "------------------------------"
+write_header() {
+  local name=$1; shift;
+  printf "%s""--------------------\\n$name%s\\n--------------------\\n"
+  printf "%s" "$@"
+}
+
+#### Print info ####
+
+write_info() {
+  local name=$1; shift;
+  printf "%s""$name%s"
+  printf "%s\\n" "$@"
+}
+
+#### Describe function ####
+
+ram_stats() {
+  # free & used memory 
+
+  local freey=$(free --giga --human) 
+  write_info "Free & Used Memory: ${freey}"
 }
 
 #### Display used and free memory info ####
@@ -33,3 +47,14 @@ function mem_info(){
 }
 
 mem_info 
+
+
+mem_info() { 
+  # wrapper function 
+
+  write_header "MEMORY INFO" "${mem_info}" 
+
+
+}
+
+mem_info
