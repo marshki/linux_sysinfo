@@ -37,8 +37,8 @@ vram_stats() {
 top_ram_eaters() {
   # regex ps to define, extract, and sort top memory (then cpu) consuming processes  
 
-  local processes=$(ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu \n
-  |head -11 | awk '{print $1, $2, $3, $4, $5, $6, $7}') 
+  local processes=$(ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu) 
+  #|head -11 | awk '{print $1, $2, $3, $4, $5, $6, $7}') 
   write_info "Top 10 Memory Eating Process: ${processes}"
 }
 
@@ -49,33 +49,8 @@ mem_info() {
 
   ram_stats
   vram_stats
-  top_ram_eaters
+  #top_ram_eaters
 }
 
 mem_info
-
-#### Display used and free memory info ####
-#function mem_info(){
-#    local processes=$(ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu) 
-    # regex ps to define, extract, and sort top memory (then cpu) consuming processes  
-        
-#    write_header "Free & Used Memory "        
-#    free --giga --human                                                 # free -gh  
-    
-#    printf "%s\n" "------------------------------"
-#    printf "%s\n" "  Virtual Memory Statistics   "
-#    printf "%s\n" "------------------------------"
-#    vmstat
-    
-#    printf "%s\n" "------------------------------"
-#    printf "%s\n" " Top 10 Memory Eating Process "
-#    printf "%s\n" "------------------------------"
-#    printf "%s\n" "${processes}" | head -11 |awk '{print $1, $2, $3, $4, $5, $6, $7}'
-    
-    # pause
-#}
-
-#mem_info 
-
-
 
