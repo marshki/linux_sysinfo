@@ -22,7 +22,7 @@ ten_last() {
 recent_users() { 
   # wrapper function 
 
-  write_header "LAST 10 LOGGED-IN USERS" "$user_info" 
+  write_header "LAST 10 LOGINS" "$user_info" 
 
   ten_last 
 } 
