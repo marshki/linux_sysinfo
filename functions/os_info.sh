@@ -1,8 +1,6 @@
 #!/bin/bash 
 # Retrieve kernel and operating system info
 
-# TODO: Clarify local variables (do they need 'local', or is entry in function enough?) 
-
 #### Print header ####
 
 write_header() {
@@ -23,32 +21,38 @@ write_info() {
 
 kernel_name() {
   # kernel name 
+
   local kern=$(uname --kernel-name)
   write_info "Kernel Name: ${kern}" 
 } 
 
 kernel_release	() { 
-  # kernel release 
+  # kernel release
+ 
   local kernr=$(uname --kernel-release)
   write_info "Kernel Release: ${kernr}" 
 } 
 
 os_name() {
   # relase name  
+
   local name=$(awk '/^NAME=/' /etc/*-release |cut --delimiter=\" --field=2)
   write_info "OS Name: ${name}" 
 }  
 
 os_version() {
   # release version
+
   local version=$(awk '/^VERSION=/' /etc/*-release |cut --delimiter=\" --field=2)
   write_info "OS Version: ${version}" 
 } 
 
+#"$os_info" 
+
 os_info() { 
   # wrapper function
-  write_header "SYSTEM INFO" "$os_info" 
-  
+
+  write_header "SYSTEM INFO"   
   kernel_name
   kernel_release 
   os_name
