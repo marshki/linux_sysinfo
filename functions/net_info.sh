@@ -1,7 +1,8 @@
 #!/bin/bash
 # Retrieve info about network interfaces & routing 
 # TODO: 
-# add more descriptive comments 
+# - add more descriptive comments 
+# - spacing? 
 
 #### Print header ####
 
@@ -11,7 +12,7 @@ write_header() {
   printf "%s" "$@"
 }
 
-#### Net Info ####
+#### Network Info ####
 
 network_interfaces() { 
   # Display number of network interfaces 
