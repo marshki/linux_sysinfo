@@ -13,7 +13,7 @@ write_header() {
 
 #### Print info ####
 
-info() {
+write_info() {
   local name=$1; shift;
   printf "%s""$name%s"
   printf "%s\\n" "$@"
@@ -40,10 +40,8 @@ vram_stats() {
 top_ram_eaters() {
   # regex ps to define, extract, and sort top memory (then cpu) consuming processes  
 
-  processes=$(ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu) 
-  # |head -11 |awk '{print $1, $2, $3, $4, $5, $6, $7}') 
-  
-  write_info "Top 10 Memory Eating Process: ${top_ten}"
+  local processes=$(ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu |head -11 |awk '{print $1, $2, $3, $4, $5, $6, $7}') 
+  write_info "Top 10 Memory Eating Process: ${processes}"
 }
 
 mem_info() { 
@@ -53,7 +51,7 @@ mem_info() {
 
   ram_stats
   vram_stats
-  #top_ram_eaters
+  top_ram_eaters
 }
 
 mem_info
