@@ -9,7 +9,7 @@ write_header() {
 }
 
 who_is_on() { 
-  # Display logged in users
+  # Display current logged in users
 
   local whoo=$(who --heading) 
   printf "%s\\n" "${whoo}"
