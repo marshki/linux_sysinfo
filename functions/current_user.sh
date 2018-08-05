@@ -8,9 +8,11 @@ write_header() {
   printf "%s" "$@"
 }
 
-who_is_on() { 
-  # Display current logged in users
+# Display current logged in users
 
+who_is_on() { 
+  # `who` built in 
+  
   local whoo=$(who --heading) 
   printf "%s\\n" "${whoo}"
  
