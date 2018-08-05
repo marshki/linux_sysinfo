@@ -1,6 +1,8 @@
 #!/bin/bash 
 # Need to run as root!!! 
 
+# --> FIX ME, PLEASE!!! <--
+
 #### Get information about free and used disk space ####
 
 #### Print header ####
