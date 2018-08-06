@@ -27,16 +27,17 @@ function pv_check(){
 fi 
 } 
 
-#### Display pause prompt ####
-# Suspend processing of script; display message prompting user to press [Enter] key to continue
-# $1-> Message (optional)
-
 function pause(){
-    local message="$@"
-    [ -z $message ] && message="Press [Enter] key to continue:  "
-    read -p "$message" readEnterKey            
+  # pause prompt 
+  # Suspend processing of script; display message prompting user to press [Enter] key to continue
+  # $1-> Message (optional)
+  
+  local message="$@"
+  [ -z $message ] && message="Press [Enter] key to continue:  "
+  read -p "$message" readEnterKey            
 }
 
+#-->LOOKIE HERE<--#
 #### Display on-screen menu ####
 
 function show_menu(){
