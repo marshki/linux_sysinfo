@@ -39,7 +39,7 @@ interface_traffic() {
   # Display status of interfaces on the network 
 
   local traffic=$(netstat --interfaces)
-  printf "%s\\n" "Interface Traffic Info: ${traffic}" 
+  printf "%s\\n" "${traffic}" 
 } 
 
 net_info() {
@@ -48,13 +48,13 @@ net_info() {
   write_header "TOTAL NETWORK INTERFACES FOUND:" 
   network_interfaces  
   
-  write_header "IP ADDRESS INFO:" 
+  write_header "IP ADDRESS INFO" 
   ip_add_info 
   
-  write_header "NETWORK ROUTING:" 
+  write_header "NETWORK ROUTING" 
   network_routing  
   
-  write_header "INTERFACE TRAFFIC INFO:" 
+  write_header "INTERFACE TRAFFIC INFO" 
   interface_traffic 
 } 
  
