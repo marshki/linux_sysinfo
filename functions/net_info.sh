@@ -45,7 +45,7 @@ interface_traffic() {
 net_info() {
   # wrapper function 
 
-  write_header "TOTAL NETWORK INTERFACES FOUND:" 
+  write_header "TOTAL NETWORK INTERFACES FOUND" 
   network_interfaces  
   
   write_header "IP ADDRESS INFO" 
