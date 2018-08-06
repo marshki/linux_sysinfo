@@ -25,18 +25,13 @@ vram_stats() {
   printf "%s\\n" "${vram}"
 }
 
-# --> FIX ME!!! <--
-
 top_ram_eaters() {
   # regex ps to define, extract, and sort top memory (then cpu) consuming processes  
 
-  local hungry_ram=$(ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu)
-  # |head -11 |awk '{print $1, $2, $3, $4, $5, $6, $7}') 
-  local hungriest_ram=$({hungry_ram} |head -11 |awk '{print $1, $2, $3, $4, $5, $6, $7}') 
- 
-  #printf "%s\\n" "${hungry_ram}"  
-  printf "%s\\n" "${hungriest_ram}"  
- 
+  local hungry_ram=$(ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu |\
+  head -11 |awk '{print $1, $2, $3, $4, $5, $6, $7}')  
+   
+  printf "%s\\n" "${hungry_ram}"  
 }
 
 mem_info() { 
