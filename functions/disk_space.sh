@@ -16,7 +16,7 @@ disk_usage() {
   # Retrieve file system info re: disk space
 
   local disk=$(df --human-readable --total |awk 'NR==1; END{print}')
-  write_info "Disk Usage: ${disk}"
+  printf "%s\\n" "${disk}"
 }
 
 #disk_hogs() {
@@ -34,8 +34,9 @@ disk_usage() {
 disk_space() { 
   # wrapper function 
 
-  write_header "DISK INFO" "${disk_space}" 
-  
+  write_header "DISK INFO" 
+
+  write_header "DISK USAGE" 
   disk_usage
   # disk_hogs  
 }
