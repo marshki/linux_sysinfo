@@ -1,8 +1,5 @@
 #!/bin/bash
 # Retrieve host & DNS info 
-
-# TODO: 
-# Variable names that better reflect what each function does
  
 #### Print header ####
 
@@ -51,8 +48,6 @@ dns_ips() {
   local name_serv=$(awk '/^nameserver/ {print $2}' /etc/resolv.conf)
   write_info "Domain Name Servers (DNS IPs): ${name_serv}"
 } 
-
-#"${host_info}"
 
 host_info() { 
   # wrapper function 
