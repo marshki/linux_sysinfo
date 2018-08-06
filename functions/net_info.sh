@@ -1,8 +1,8 @@
 #!/bin/bash
 # Retrieve info about network interfaces & routing 
+
 # TODO: 
 # - add more descriptive comments 
-# - spacing? 
 
 #### Print header ####
 
@@ -45,7 +45,7 @@ interface_traffic() {
 net_info() {
   # wrapper function 
 
-  write_header "TOTAL NETWORK INTERFACES FOUND" 
+  write_header "TOTAL NETWORK INTERFACES" 
   network_interfaces  
   
   write_header "IP ADDRESS INFO" 
