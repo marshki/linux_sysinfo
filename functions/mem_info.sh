@@ -9,15 +9,6 @@ write_header() {
   printf "%s" "$@"
 }
 
-# CAN PROBABLY REMOVE
-#### Print info ####
-
-#write_info() {
-#  local name=$1; shift;
-#  printf "%s""$name%s"
-#  printf "%s\\n" "$@"
-#}
-
 #### RAM Stats ####
 
 ram_stats() {
@@ -31,18 +22,22 @@ vram_stats() {
   # display virtual memory 
 
   local vram=$(vmstat) 
-  printf "$s\\n" "${vram}"
+  printf "%s\\n" "${vram}"
 }
+
+# --> FIX ME!!! <--
 
 top_ram_eaters() {
   # regex ps to define, extract, and sort top memory (then cpu) consuming processes  
 
-  local processes=$(ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu \
-  |head -11 |awk '{print $1, $2, $3, $4, $5, $6, $7}') 
-  
+  local hungry_ram=$(ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu)
+  # |head -11 |awk '{print $1, $2, $3, $4, $5, $6, $7}') 
+  local hungriest_ram=$({hungry_ram} |head -11 |awk '{print $1, $2, $3, $4, $5, $6, $7}') 
+ 
+  #printf "%s\\n" "${hungry_ram}"  
+  printf "%s\\n" "${hungriest_ram}"  
+ 
 }
-
-#"${mem_info}" 
 
 mem_info() { 
   # wrapper function 
@@ -52,7 +47,7 @@ mem_info() {
   write_header "FREE & USED MEMORY"
   ram_stats
   
-  write_header "VIRTUAL MEMEORY STATISTICS" 
+  write_header "VIRTUAL MEMORY STATISTICS" 
   vram_stats
 
   write_header "TOP 10 MEMORY EATING PROCESS" 
