@@ -1,11 +1,14 @@
 #!/bin/bash
 
+# README!!!
+# -->MENU CAN BE FURTHER ABSTRACTED<--#
+
 #### Display on-screen menu ####
 
 function show_menu(){
     date
     printf "%s\n" "------------------------------"
-    printf "%s\n" "  Bash System Info            " 
+    printf "%s\n" "  Linux System Info           " 
     printf "%s\n" "  Main Menu                   "
     printf "%s\n" "------------------------------"
         printf "%s\n" "  1. OS Info" 
@@ -50,4 +53,3 @@ do
     show_menu
     read_input
 done
-
