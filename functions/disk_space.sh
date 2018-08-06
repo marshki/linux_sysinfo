@@ -1,9 +1,6 @@
 #!/bin/bash 
 # Need to run as root!!! 
-
-# --> FIX ME, PLEASE!!! <--
-
-#### Get information about free and used disk space ####
+# Retrieve disk space/usage info 
 
 #### Print header ####
 
@@ -13,15 +10,7 @@ write_header() {
   printf "%s" "$@"
 }
 
-#### Print info ####
-
-write_info() {
-  local name=$1; shift;
-  printf "%s""$name%s"
-  printf "%s\\n" "$@"
-}
-
-#### meat & potatoes ####
+#### Get information about free and used disk space ####
 
 disk_usage() {
   # Retrieve file system info re: disk space
