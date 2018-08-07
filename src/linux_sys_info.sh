@@ -368,19 +368,11 @@ mem_info() {
   pause 
 }
 
-
-#### DISK INFO 
+#### DISK INFO  #### 
 # info on free & used disk space 
- 
-############################################################
-# A note about Top 10 Disk Eating Files:                   #
-# This program is designed so that a non-root user can     #
-# access all functions.If run as non-root,                 #
-# you will be limited in what paths you will be able to    #
-# to search, thereby impacting your results.               #
-# If that's not acceptable, you can run this program with  #
-# elevated privileges.                                     # 
-############################################################
+# NOTE: this script was designed to run w/out eleveated privilieges,  
+# BUT: if run-as a non-admin user, the results from `disk hogs`
+# will be limited  
 
 disk_usage() {
   # Retrieve file system info re: disk space
