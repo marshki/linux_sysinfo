@@ -1,6 +1,6 @@
 #!/usr/bin/env bash 
 # v.2.0 
-# mjk 2016.10.07
+# mjk 2018.08.07
 
 ######################################################
 # Bash shell script to extract useful information    #
@@ -15,9 +15,10 @@
 # attributed to Vivek Gite circa 2007.09.12.         #
 ######################################################
 
-#### Preliminaries ####
+#### PRELIMS ####
 
 function pv_check(){
+  # (`pv` is used in `disk_hogs` for progress bar) 
   # `which` to check for `pv` --> output to /dev/null
   # exit program if not installed 
 
@@ -27,6 +28,67 @@ function pv_check(){
 fi 
 } 
 
+#### HEADERS #### 
+
+write_header() {
+  # print header 
+
+  local name=$1; shift;
+  printf "%s""--------------------\\n$name%s\\n--------------------\\n"
+  printf "%s" "$@"
+}
+
+write_info() {
+  # print info 
+
+  local name=$1; shift;
+  printf "%s""$name%s"
+  printf "%s\\n" "$@"
+}
+
+#### MENU ####
+
+show_menu() { 
+  # display on screen menu 
+
+  date
+  printf "%s\n" "------------------------------"
+  printf "%s\n" "  Bash System Info            " 
+  printf "%s\n" "  Main Menu                   "
+  printf "%s\n" "------------------------------"
+    printf "%s\n" "  1. OS Info" 
+    printf "%s\n" "  2. Hostname & DNS Info"
+    printf "%s\n" "  3. Network Info"
+    printf "%s\n" "  4. Who is Online"
+    printf "%s\n" "  5. Last Logged in Users"
+    printf "%s\n" "  6. CPU Info" 
+    printf "%s\n" "  7. Free & Used Memory Info"
+    printf "%s\n" "  8. Disk Usage" 
+    printf "%s\n" "  9. Exit" 
+}
+
+read_input(){
+  # get input via keyboard and make a decision using case...esac 
+
+  local c
+  read -p "Enter your choice [ 1-9 ]:  " c
+  case $c in
+    1) os_info ;;
+    2) host_info ;;
+    3) net_info ;; 
+    4) user_info "who" ;;
+    5) user_info "last" ;;
+    6) cpu_info ;; 
+    7) mem_info ;;
+    8) disk_space;;
+    9) printf "%s\n" "Ciao!"; exit 0 ;;
+    *)
+       printf "%s\n" "Select an Option (1 to 9):  "
+
+       pause
+esac 
+}
+
 function pause(){
   # pause prompt 
   # Suspend processing of script; display message prompting user to press [Enter] key to continue
@@ -35,36 +97,6 @@ function pause(){
   local message="$@"
   [ -z $message ] && message="Press [Enter] key to continue:  "
   read -p "$message" readEnterKey            
-}
-
-#-->LOOKIE HERE<--#
-#### Display on-screen menu ####
-
-function show_menu(){
-    date
-    printf "%s\n" "------------------------------"
-    printf "%s\n" "  Bash System Info            " 
-    printf "%s\n" "  Main Menu                   "
-    printf "%s\n" "------------------------------"
-        printf "%s\n" "  1. OS Info" 
-        printf "%s\n" "  2. Hostname & DNS Info"
-        printf "%s\n" "  3. Network Info"
-        printf "%s\n" "  4. Who is Online"
-        printf "%s\n" "  5. Last Logged in Users"
-        printf "%s\n" "  6. CPU Info" 
-        printf "%s\n" "  7. Free & Used Memory Info"
-        printf "%s\n" "  8. Disk Usage" 
-        printf "%s\n" "  9. Exit" 
-}
-
-#### Display header message #### 
-# $1 - message 
-
-function write_header(){
-    local h="$@"
-    printf "%s\n" "------------------------------"
-    printf "%s\n" "  ${h}"
-    printf "%s\n" "------------------------------"
 }
 
 #### Get info about Operating System ####
@@ -213,27 +245,6 @@ function disk_space(){
     pause 
 }
 
-#### Get input via the keyboard and make a decision using case...esac ####
-
-function read_input(){
-    local c
-    read -p "Enter your choice [ 1-9 ]:  " c
-    case $c in
-        1) os_info ;;
-        2) host_info ;;
-        3) net_info ;; 
-        4) user_info "who" ;;
-        5) user_info "last" ;;
-        6) cpu_info ;; 
-        7) mem_info ;;
-        8) disk_space;;
-        9) printf "%s\n" "Ciao!"; exit 0 ;;
-        *)
-           printf "%s\n" "Select an Option (1 to 9):  "
-
-           pause
-    esac 
-}
 
 #### Ignore CTRL+C, CTRL+Z and quit signals using the trap ####
 
