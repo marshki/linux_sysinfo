@@ -2,6 +2,9 @@
 # v.2.0 
 # mjk 2018.08.07
 
+#--> BETA RELEASE. TESTING IN PROGRESS <--# 
+
+
 #######################################################
 # Bash script to extract useful info from a Linux box #
 # Tested to run on the following distros:             #
