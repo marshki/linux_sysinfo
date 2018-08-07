@@ -15,7 +15,9 @@
 # attributed to Vivek Gite circa 2007.09.12.         #
 ######################################################
 
+#################
 #### PRELIMS ####
+#################
 
 function pv_check(){
   # (`pv` is used in `disk_hogs` for progress bar) 
@@ -28,7 +30,9 @@ function pv_check(){
 fi 
 } 
 
+#################
 #### HEADERS #### 
+#################
 
 write_header() {
   # print header 
@@ -46,15 +50,17 @@ write_info() {
   printf "%s\\n" "$@"
 }
 
+##############
 #### MENU ####
+##############
 
 show_menu() { 
   # display on screen menu 
 
   date
   printf "%s\n" "------------------------------"
-  printf "%s\n" "  Bash System Info            " 
-  printf "%s\n" "  Main Menu                   "
+  printf "%s\n" "  LINUX SYSTEM INFO           " 
+  printf "%s\n" "  MAIN MENU                   "
   printf "%s\n" "------------------------------"
     printf "%s\n" "  1. OS Info" 
     printf "%s\n" "  2. Hostname & DNS Info"
@@ -68,7 +74,8 @@ show_menu() {
 }
 
 read_input(){
-  # get input via keyboard and make a decision using case...esac 
+  # get user input via keyboard and make a decision using case...esac 
+  ##-->UPDATE TO REFLECT NEW FUNCTION NAMES<--##
 
   local c
   read -p "Enter your choice [ 1-9 ]:  " c
@@ -89,9 +96,9 @@ read_input(){
 esac 
 }
 
-function pause(){
+pause() {
   # pause prompt 
-  # Suspend processing of script; display message prompting user to press [Enter] key to continue
+  # suspend processing of script; display message prompting user to press [Enter] key to continue
   # $1-> Message (optional)
   
   local message="$@"
@@ -99,37 +106,100 @@ function pause(){
   read -p "$message" readEnterKey            
 }
 
-#### Get info about Operating System ####
+trap '' SIGINT SIGQUIT SIGTSTP
+  # ignore CTRL+C, CTRL+Z and quit signals using the trap 
 
-function  os_info(){
-    local name=$(cat /etc/*-release    |grep --word-regexp "NAME="   |sed 's/NAME=//g; s/"//g')        # grep -w     
-    local version=$(cat /etc/*-release |grep --word-regexp "VERSION="|sed 's/VERSION=//g; s/"//g')     # ""  
+##################
+#### SYS INFO ####
+##################
 
-    write_header "System Info"
-    printf "%s\n" "OPERATING SYSTEM : $(uname --kernel-name)"                                          # uname -s
-    printf "%s\n" "KERNEL VERSION   : $(uname --kernel-release)"                                       # uname -r
-    printf "%s\n" "NAME             : ${name}" 
-    printf "%s\n" "VERSION          : ${version}"
-        
-    pause                                                               
+#### OS INFO  ####
+# kernel and operating system info
+
+kernel_name() {
+  # kernel name 
+
+  local kern=$(uname --kernel-name)
+  write_info "Kernel Name: ${kern}" 
+} 
+
+kernel_release	() { 
+  # kernel release
+ 
+  local kernr=$(uname --kernel-release)
+  write_info "Kernel Release: ${kernr}" 
+} 
+
+os_name() {
+  # relase name  
+
+  local name=$(awk '/^NAME=/' /etc/*-release |cut --delimiter=\" --field=2)
+  write_info "OS Name: ${name}" 
+}  
+
+os_version() {
+  # release version
+
+  local version=$(awk '/^VERSION=/' /etc/*-release |cut --delimiter=\" --field=2)
+  write_info "OS Version: ${version}" 
+} 
+
+os_info() { 
+  # wrapper function
+
+  write_header "SYSTEM INFO"   
+  kernel_name
+  kernel_release 
+  os_name
+  os_version
+
+  pause
+} 
+
+#### HOST INFO ####
+# host & DNS info 
+
+host_name() { 
+  local host=$(hostname --short) 
+  write_info "Hostname: ${host}" 
 }
 
-#### Get info about Host(DNS, IP, Hostname) ####
+dns_domain() { 
+  local dns=$(hostname --domain)
+  write_info "DNS Domain: ${dns}" 
+} 
 
-function host_info(){
-    local dnsname=$(grep --word-regexp 'search' /etc/resolv.conf     |sed 's/search //g')       # grep -w
-    local dnsips=$(grep --word-regexp 'nameserver' /etc/resolv.conf  |sed 's/nameserver //g')   # "
-   
-    write_header "Hostname and DNS Info"
-    printf "%s\n" "Hostname                              : $(hostname --short)"                          # hostname -s 
-    printf "%s\n" "DNS Domain                            : $(hostname --domain)"                         # hostname -d 
-    printf "%s\n" "Fully-qualified Domain Name (FQDN)    : $(hostname --fqdn)"                           # hostname -f 
-    printf "%s\n" "Network Address (IP)                  : $(hostname --ip-address)"                     # hostname -i 
-    printf "%s\n" "Domain Name Servers (DNS name)        : ${dnsname}"    
-    printf "%s\n" "Domain Name Servers (DNS IPs)         : ${dnsips}"
-                           
-    pause
-}
+fully_qualified() {
+  local fqdn=$(hostname --fqdn) 
+  write_info "Fully-qualified Domain Name: ${fqdn}"
+} 
+
+ip_address() { 
+  local ip=$(hostname --ip-address) 
+  write_info "Network Address (IP): ${ip}"
+} 
+
+dns_name() { 
+  local search=$(awk '/^search/ {print $2}' /etc/resolv.conf)
+  write_info "Domain Name Servers (DNS name): ${search}"
+} 
+
+dns_ips() { 
+  local name_serv=$(awk '/^nameserver/ {print $2}' /etc/resolv.conf)
+  write_info "Domain Name Servers (DNS IPs): ${name_serv}"
+} 
+
+host_info() { 
+  # wrapper function 
+
+  write_header "HOSTNAME & DNS INFO" 
+  host_name
+  dns_domain
+  fully_qualified
+  ip_address
+  dns_name
+  dns_ips
+} 
 
 #### Get info about Network Interface and Routing ####
 
@@ -246,13 +316,12 @@ function disk_space(){
 }
 
 
-#### Ignore CTRL+C, CTRL+Z and quit signals using the trap ####
-
-trap '' SIGINT SIGQUIT SIGTSTP
 
 #### Main logic ####
-# Run pv check, then 
-# display menu and wait for user input 
+
+# Run pv check;  
+# clear screen; 
+# display menu and process user input 
 
 pv_check 
 while true 
