@@ -402,6 +402,8 @@ disk_space() {
 
   write_header "TOP 10 DISK-EATING FILES" 
   disk_hogs  
+
+  pause 
 }
 
 ##############
