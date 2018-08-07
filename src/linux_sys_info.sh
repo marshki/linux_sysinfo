@@ -368,8 +368,10 @@ mem_info() {
   pause 
 }
 
-#### Display information on disk space usage ####
 
+#### DISK INFO 
+# info on free & used disk space 
+ 
 ############################################################
 # A note about Top 10 Disk Eating Files:                   #
 # This program is designed so that a non-root user can     #
@@ -380,12 +382,39 @@ mem_info() {
 # elevated privileges.                                     # 
 ############################################################
 
+disk_usage() {
+  # Retrieve file system info re: disk space
 
-#### Main logic ####
+  local disk=$(df --human-readable --total |awk 'NR==1; END{print}')
+  printf "%s\\n" "${disk}"
+}
+ 
+disk_hogs() { 
+  # top 10 disk-eating files 
+ 
+  printf "%s\\n" "Searching..." 
+  
+  # scan file system from / for files; output background noise to /dev/null; pv for progress 
+  local largestfiles=$(find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null |pv)
 
-# Run pv check;  
-# clear screen; 
-# display menu and process user input 
+  printf "%s\n" "${largestfiles}" |sort --reverse --human | head --lines=10
+} 
+
+disk_space() { 
+  # wrapper  
+
+  write_header "DISK INFO" 
+
+  write_header "DISK USAGE" 
+  disk_usage
+
+  write_header "TOP 10 DISK-EATING FILES" 
+  disk_hogs  
+}
+
+##############
+#### Main #### 
+##############
 
 pv_check 
 while true 
