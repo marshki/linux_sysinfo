@@ -2,13 +2,11 @@
 # v.2.0 
 # mjk 2018.08.07
 
-######################################################
-# Bash shell script to extract useful information    #
-# from a Linux box using a text-based interface.     #
-#                                                    #
-# Tested to run on the following distros:            #
-# Ubuntu 16.04 LTS "Xenial Xerus"                    # 
-######################################################
+#######################################################
+# Bash script to extract useful info from a Linux box #
+# Tested to run on the following distros:             #
+# Ubuntu 16.04 LTS "Xenial Xerus"                     # 
+#######################################################
 
 ######################################################
 # This script builds on, and improves grabsysinfo.sh #
@@ -75,7 +73,6 @@ show_menu() {
 
 read_input(){
   # get user input via keyboard and make a decision using case...esac 
-  ##-->UPDATE TO REFLECT NEW FUNCTION NAMES<--##
 
   local c
   read -p "Enter your choice [ 1-9 ]:  " c
@@ -84,7 +81,7 @@ read_input(){
     2) host_info ;;
     3) net_info ;; 
     4) current_users ;;
-    5) user_info "last" ;;
+    5) recent_users ;;
     6) cpu_info ;; 
     7) mem_info ;;
     8) disk_space;;
@@ -145,14 +142,13 @@ os_version() {
 } 
 
 os_info() { 
-  # wrapper function
-
+  # wrapper
+ 
   write_header "SYSTEM INFO"   
   kernel_name
   kernel_release 
   os_name
   os_version
-
   pause
 } 
 
@@ -190,8 +186,8 @@ dns_ips() {
 } 
 
 host_info() { 
-  # wrapper function 
-
+  # wrapper
+ 
   write_header "HOSTNAME & DNS INFO" 
   host_name
   dns_domain
@@ -199,7 +195,6 @@ host_info() {
   ip_address
   dns_name
   dns_ips
-
   pause
 } 
 
@@ -235,7 +230,8 @@ interface_traffic() {
 } 
 
 net_info() {
-  # wrapper function 
+  # wrapper
+ 
   write_header "NETWORK INFO" 
 
   write_header "TOTAL NETWORK INTERFACES" 
@@ -254,17 +250,18 @@ net_info() {
 } 
 
 #### CURRENT USERS ####
+# logged in users 
 
 who_is_on() { 
   # `who` built in 
   
   local whoo=$(who --heading) 
   printf "%s\\n" "${whoo}"
- 
 } 
 
 current_users() { 
   # wrapper function 
+
   write_header "WHO IS ONLINE?"  
 
   who_is_on
@@ -273,52 +270,102 @@ current_users() {
 } 
 
 #### RECENT USERS ####
+# list of recent logins 
 
-function user_info(){
-    local cmd="$1"
-    case "$cmd" in
-        who) write_header "Who is Online? "; who --heading;;                # who -H 
-        last) write_header "Last 10 Logged in Users "; last -n 10 -a -d;;   # last -num 10 -a -d   
-    esac
-    
-    pause 
+ten_last() { 
+  # `last` built-in; last 10 incl. host & dns 
+
+  local lasty=$(last --limit 10 --hostlast --dns)  
+  printf "%s\\n" "${lasty}"   
+} 
+
+recent_users() { 
+  # wrapper
+ 
+  write_header "LAST 10 LOGINS" #"$user_info" 
+
+  ten_last 
+
+  pause 
+} 
+
+### CPU INFO ### 
+# info about CPU
+
+cpu_model() {
+  # query lscpu for: `Model name`
+ 
+  local model=$(lscpu |grep --word-regexp 'Model name:') 
+  write_info "${model}" 
 }
 
-### Display CPU info ### 
+cpu_socket() { 
+  # query lscpu for: `Sockets`
 
-function cpu_info(){
-
-    write_header "CPU Info"
-
-    lscpu |grep --word-regexp 'Model name:'                             # grep -w 
-    lscpu |grep --word-regexp 'Socket(s)'                               # " 
-    lscpu |grep --word-regexp 'Core(s) per socket'                      # " 
-    # Query lscpu for: `Model name`, `Socket(s)`, and `Cores per socket`
-
-    pause
-    
+  local socket=$(lscpu |grep --word-regexp 'Socket(s):')
+  write_info "${socket}"
 }
 
-#### Display used and free memory info ####
+cpu_cores() { 
+  # query lscpu for: `Cores`
+  
+  local cores=$(lscpu |grep --word-regexp 'Core(s) per socket:')
+  write_info "${cores}" 
+} 
 
-function mem_info(){
-    local processes=$(ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu) 
-    # regex ps to define, extract, and sort top memory (then cpu) consuming processes  
-        
-    write_header "Free & Used Memory "        
-    free --giga --human                                                 # free -gh  
-    
-    printf "%s\n" "------------------------------"
-    printf "%s\n" "  Virtual Memory Statistics   "
-    printf "%s\n" "------------------------------"
-    vmstat
-    
-    printf "%s\n" "------------------------------"
-    printf "%s\n" " Top 10 Memory Eating Process "
-    printf "%s\n" "------------------------------"
-    printf "%s\n" "${processes}" | head -11 |awk '{print $1, $2, $3, $4, $5, $6, $7}'
-    
-    pause
+cpu_info() { 
+  # wrapper
+ 
+  write_header "CPU INFO" "${cpu_info}"
+  
+  cpu_model
+  cpu_socket
+  cpu_cores 
+
+  pause 
+} 
+
+#### MEM INFO ####
+# used and free memory  
+
+ram_stats() {
+  # display free & used memory 
+
+  local ram=$(free --giga --human) 
+  printf "%s\\n" "${ram}" 
+}
+
+vram_stats() {
+  # display virtual memory 
+
+  local vram=$(vmstat) 
+  printf "%s\\n" "${vram}"
+}
+
+top_ram_eaters() {
+  # regex ps to define, extract, and sort top memory (then cpu) consuming processes  
+
+  local hungry_ram=$(ps -Ao user,pid,pcpu,pmem,stat,command --sort=-%mem,-%cpu |\
+  head -11 |awk '{print $1, $2, $3, $4, $5, $6, $7}')  
+   
+  printf "%s\\n" "${hungry_ram}"  
+}
+
+mem_info() { 
+  # wrapper
+ 
+  write_header "MEMORY INFO" 
+
+  write_header "FREE & USED MEMORY"
+  ram_stats
+  
+  write_header "VIRTUAL MEMORY STATISTICS" 
+  vram_stats
+
+  write_header "TOP 10 MEMORY EATING PROCESS" 
+  top_ram_eaters
+
+  pause 
 }
 
 #### Display information on disk space usage ####
@@ -332,31 +379,6 @@ function mem_info(){
 # If that's not acceptable, you can run this program with  #
 # elevated privileges.                                     # 
 ############################################################
-
-function disk_space(){
-
-    printf "%s\n" "Processing ..."
-
-    local largestfiles=$(find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null |pv )
-    # find largest files by disk space; pv to provide feedback 
-    # find / -type f -exec du -Sh {} + 2>/dev/null
-
-    write_header "Disk Usage"
-    df --human-readable --total | awk 'NR==1; END{print}'                           # df -h --total   
-
-    # printf "%s" "Retrieving largest files..."
-
-    printf "%s\n" "------------------------------" 
-    printf "%s\n" "   Top 10 Disk Eating Files   " 
-    printf "%s\n" "------------------------------"     
-    printf "%s\n" "${largestfiles}" |sort --reverse --human | head --lines=10       # sort -rh | head -n 10
-
-    # find / -type f -exec du --separate-dirs --human-readable {} + 2>/dev/null | sort --reverse --human | head --lines=10 
-    # find / -type f -exec du -Sh {} + 2>/dev/null | sort -rh | head -n 10
-
-    pause 
-}
-
 
 
 #### Main logic ####
