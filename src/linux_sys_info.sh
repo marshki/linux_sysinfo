@@ -83,7 +83,7 @@ read_input(){
     1) os_info ;;
     2) host_info ;;
     3) net_info ;; 
-    4) user_info "who" ;;
+    4) current_users ;;
     5) user_info "last" ;;
     6) cpu_info ;; 
     7) mem_info ;;
@@ -253,8 +253,26 @@ net_info() {
   pause 
 } 
 
-#### Display list of users currently logged on & a list of recently logged in users ####
-rk Info ####
+#### CURRENT USERS ####
+
+who_is_on() { 
+  # `who` built in 
+  
+  local whoo=$(who --heading) 
+  printf "%s\\n" "${whoo}"
+ 
+} 
+
+current_users() { 
+  # wrapper function 
+  write_header "WHO IS ONLINE?"  
+
+  who_is_on
+ 
+  pause 
+} 
+
+#### RECENT USERS ####
 
 function user_info(){
     local cmd="$1"
