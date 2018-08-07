@@ -199,38 +199,62 @@ host_info() {
   ip_address
   dns_name
   dns_ips
+
+  pause
 } 
 
-#### Get info about Network Interface and Routing ####
+#### NET INFO ####
+# network interfaces and routing 
 
-function net_info(){
-    local devices=$(netstat --interfaces | cut --delimiter=" " --fields=1 | egrep --invert-match "Kernel|Iface|lo")   
-    # regex netstat to list network interfaces 
-    # devices=$(netstat -i | cut -d" " -f1 | egrep -v "Kernel|Iface|lo")
-    
-    write_header "Network Info"
-    printf "%s\n" "Total Network Interfaces Found : 
-    $(wc --words <<<${devices})"                                        # $(wc --words <<<${devices})"
-    
-    printf "%s\n" "------------------------------"
-    printf "%s\n" "  IP Addresses Info           "
-    printf "%s\n" "------------------------------"
-    ip -family inet address show                                        # ip -4 address show 
+network_interfaces() { 
+  # number of network interfaces 
 
-    printf "%s\n" "------------------------------"
-    printf "%s\n" "  Network Routing             "
-    printf "%s\n" "------------------------------"
-    netstat --numeric --route                                           # netstat -nr 
-
-    printf "%s\n" "------------------------------"
-    printf "%s\n" "  Interface Traffic Info      "
-    printf "%s\n" "------------------------------"
-    netstat --interfaces                                                # netstat -i  
-
-    pause 
+  local devices=$(ip -oneline link show |wc --lines) 
+  printf "%s\\n" "${devices}"  	
 }
 
+ip_add_info() {
+  # IP protocol addresses
+
+  local ip_add=$(ip --family inet address show)
+  printf "%s\\n" "${ip_add}"  
+} 
+
+network_routing() {
+  # IP routing table  
+
+  local route=$(netstat --route --numeric)
+  printf "%s\\n" "${route}" 
+} 
+
+interface_traffic() {
+  # status of interfaces on the network 
+
+  local traffic=$(netstat --interfaces)
+  printf "%s\\n" "${traffic}" 
+} 
+
+net_info() {
+  # wrapper function 
+  write_header "NETWORK INFO" 
+
+  write_header "TOTAL NETWORK INTERFACES" 
+  network_interfaces  
+  
+  write_header "IP ADDRESS INFO" 
+  ip_add_info 
+  
+  write_header "NETWORK ROUTING" 
+  network_routing  
+  
+  write_header "INTERFACE TRAFFIC INFO" 
+  interface_traffic 
+
+  pause 
+} 
+
 #### Display list of users currently logged on & a list of recently logged in users ####
+rk Info ####
 
 function user_info(){
     local cmd="$1"
