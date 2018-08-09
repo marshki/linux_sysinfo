@@ -4,7 +4,6 @@
 
 #--> BETA RELEASE. TESTING IN PROGRESS <--# 
 
-
 #######################################################
 # Bash script to extract useful info from a Linux box #
 # Tested to run on the following distros:             #
@@ -105,9 +104,6 @@ pause() {
   [ -z $message ] && message="Press [Enter] key to continue:  "
   read -p "$message" readEnterKey            
 }
-
-trap '' SIGINT SIGQUIT SIGTSTP
-  # ignore CTRL+C, CTRL+Z and quit signals using the trap 
 
 ##################
 #### SYS INFO ####
