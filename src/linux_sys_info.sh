@@ -2,22 +2,14 @@
 # v.2.0 
 # mjk 2018.08.07
 
-#--> BETA RELEASE. TESTING IN PROGRESS <--# 
-
-#######################################################
 # Bash script to extract useful info from a Linux box #
 # Tested to run on the following distros:             #
 # Ubuntu 16.04 LTS "Xenial Xerus"                     # 
-#######################################################
 
-######################################################
 # This script builds on, and improves grabsysinfo.sh #
 # attributed to Vivek Gite circa 2007.09.12.         #
-######################################################
 
-#################
 #### PRELIMS ####
-#################
 
 function pv_check(){
   # (`pv` is used in `disk_hogs` for progress bar) 
@@ -25,14 +17,13 @@ function pv_check(){
   # exit program if not installed 
 
   if ! which pv &> /dev/null; then 
-  printf "%s\n" "ERROR: Please install pv or add it to your path." 
+  printf "%s\\n" "ERROR: PLEASE INSTALL PV OR ADD IT TO YOUR PATH." 
+
   exit 1
 fi 
 } 
 
-#################
 #### HEADERS #### 
-#################
 
 write_header() {
   # print header 
@@ -50,9 +41,7 @@ write_info() {
   printf "%s\\n" "$@"
 }
 
-##############
 #### MENU ####
-##############
 
 show_menu() { 
   # display on screen menu 
@@ -405,9 +394,7 @@ disk_space() {
   pause 
 }
 
-##############
 #### Main #### 
-##############
 
 pv_check 
 while true 
