@@ -14,13 +14,10 @@ disk_hogs() {
   printf "%s\\n" "Searching..."
 
   # scan file system from / for directories; output background noise to: /dev/null; pv for progress 
-  local largestdirs=$(find / -type d -exec du --max-depth=2 --human-readable {} + 2>/dev/null |pv)
   
-  # local largestdirs=$(find / -type d -exec du --separate-dirs --human-readable {} + 2>/dev/null |pv)
-  
-  #local largestdirs=$(find /home -type d -exec du --separate-dirs --human-readable {} + 2>/dev/null |pv) 
+  local largestdirs=$(find / -type d -exec du --separate-dirs --human-readable {} + 2>/dev/null |pv)
 
-  printf "%s\\n" "${largestdirs}" |sort --reverse --human |head --lines=10 
+  printf "%s\\n" "${largestdirs}" |sort --reverse --human |uniq |head --lines=10 
 
 } 
 
