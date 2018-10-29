@@ -33,10 +33,8 @@ Debian 8     | Debian 8 pi
  
 # TODO
 
-[ ] General code review and clean up. 
-[ ] Use `awk` to do most regexp stuff.  
-[ ] Refactor header for.
 [ ] Test on: Fedora 26 & 27, Ubuntu 18.04.   
+[ ] `last` command needs to be paired for compatibility 
 
 # History 
 
