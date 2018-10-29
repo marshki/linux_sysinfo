@@ -2,17 +2,17 @@
 # v.2.0 
 # mjk 2018.08.07
 
-# Bash script to extract useful info from a Linux box #
-# Tested to run on the following distros:             #
-# Ubuntu 16.04 LTS "Xenial Xerus"                     # 
+#### Bash script to extract useful info from a Linux box ####
+#### Tested to run on the following distros:             ####
+#### Ubuntu 16.04 LTS "Xenial Xerus"                     #### 
 
-# This script builds on, and improves grabsysinfo.sh #
-# attributed to Vivek Gite circa 2007.09.12.         #
+#### This script builds on, and improves grabsysinfo.sh ####
+#### attributed to Vivek Gite circa 2007.09.12.         ####
 
 #### PRELIMS ####
 
 function pv_check(){
-  # (`pv` is used in `disk_hogs` for progress bar) 
+  # `pv` is used in `disk_hogs` for progress bar 
   # `which` to check for `pv` --> output to /dev/null
   # exit program if not installed 
 
@@ -44,7 +44,7 @@ write_info() {
 #### MENU ####
 
 show_menu() { 
-  # display on screen menu 
+  # display on-screen menu 
 
   date
   printf "%s\n" "------------------------------"
@@ -94,9 +94,7 @@ pause() {
   read -p "$message" readEnterKey            
 }
 
-##################
 #### SYS INFO ####
-##################
 
 #### OS INFO  ####
 # kernel and operating system info
