@@ -38,3 +38,20 @@ dir_hogs() {
 
 } 
 
+disk_space() { 
+  # wrapper 
+
+  write_info "DISK INFO" 
+  
+  write_info "DISK USAGE" 
+  disk_usage
+
+  write_info "TOP 10 DISK-EATING FILES"  
+  file_hogs 
+
+  write_info "TOP 10 DISK-EATING FOLDERS" 
+  dir_hogs  
+
+}
+
+disk_space 
