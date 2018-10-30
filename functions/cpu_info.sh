@@ -1,4 +1,5 @@
 #!/bin/bash 
+# CPU: model, sockets, cores
 
 #### Print header ####
 
