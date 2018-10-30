@@ -1,10 +1,17 @@
 #!/bin/bash 
 
-write_info() {
+write_header() {
+  local name=$1; shift;
+  printf "%s""--------------------\\n$name%s\\n--------------------\\n"
+  printf "%s" "$@"
+}
+
+write_info() { 
   local name=$1; shift;
   printf "%s" "$name%s"
   printf "%s\\n" "$@"
-}
+
+} 
 
 disk_usage() {
   # Retrieve file system info re: disk space
