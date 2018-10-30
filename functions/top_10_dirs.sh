@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+# Get top 10 dirs by size 
 
 write_info() { 
   # header 
