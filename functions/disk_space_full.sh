@@ -1,17 +1,20 @@
 #!/bin/bash 
 
+#### Print header ####
+
 write_header() {
   local name=$1; shift;
   printf "%s""--------------------\\n$name%s\\n--------------------\\n"
   printf "%s" "$@"
 }
 
-write_info() { 
+#### Print info ####
+
+write_info() {
   local name=$1; shift;
   printf "%s" "$name%s"
   printf "%s\\n" "$@"
-
-} 
+}
 
 disk_usage() {
   # Retrieve file system info re: disk space
@@ -30,7 +33,7 @@ file_hogs() {
   
   printf "%s\\n" "${largestfiles}" |sort --reverse --human |head --lines=10 
 
-} 
+}
 
 dir_hogs() {
   # Retrieve top 10 disk-eating directories
@@ -45,20 +48,15 @@ dir_hogs() {
 
 } 
 
-disk_space() { 
-  # wrapper 
+disk_info() { 
+  # wrapper info 
 
-  write_info "DISK INFO" 
+  write_header "DISK INFO" "${disk_info}"
   
-  write_info "DISK USAGE" 
   disk_usage
-
-  write_info "TOP 10 DISK-EATING FILES"  
-  file_hogs 
-
-  write_info "TOP 10 DISK-EATING FOLDERS" 
+  file_hogs
   dir_hogs  
 
 }
 
-disk_space 
+disk_info  
