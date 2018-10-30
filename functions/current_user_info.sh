@@ -1,4 +1,5 @@
 #!/bin/bash
+# Get logged-in users
  
 #### Print header ####
 
