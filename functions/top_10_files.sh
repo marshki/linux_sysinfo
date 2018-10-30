@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+# Get top 10 files by disk size
 
 write_info() { 
   # header 
