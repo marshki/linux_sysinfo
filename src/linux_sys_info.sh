@@ -367,7 +367,7 @@ disk_usage() {
   printf "%s\\n" "${disk}"
 }
  
-disk_hogs() { 
+file_hogs() { 
   # top 10 disk-eating files 
  
   printf "%s\\n" "Searching..." 
@@ -378,6 +378,19 @@ disk_hogs() {
   printf "%s\n" "${largestfiles}" |sort --reverse --human | head --lines=10
 } 
 
+dir_hogs() {
+  # Retrieve top 10 disk-eating directories
+
+  printf "%s\\n" "Searching..."
+
+  # scan file system from / for directories; output background noise to: /dev/null; pv for progress
+
+  local largestdirs=$(find / -type d -exec du --separate-dirs --human-readable {} + 2>/dev/null |pv)
+
+  printf "%s\\n" "${largestdirs}" |sort --reverse --human |uniq |head --lines=10
+
+}
+
 disk_space() { 
   # wrapper  
 
@@ -387,7 +400,10 @@ disk_space() {
   disk_usage
 
   write_header "TOP 10 DISK-EATING FILES" 
-  disk_hogs  
+  file_hogs  
+
+  write_header "TOP 10 DISK-EATING DIRECTORIES"
+  dir_hogs
 
   pause 
 }
