@@ -8,7 +8,7 @@ write_info() {
   printf "%s\\n" "$@"  
 }
 
-disk_hogs() {
+dir_hogs() {
   # Retrieve top 10 disk-eating directories
 
   printf "%s\\n" "Searching..."
@@ -21,4 +21,4 @@ disk_hogs() {
 
 } 
 
-disk_hogs 
+dir_hogs 
