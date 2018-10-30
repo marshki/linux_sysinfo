@@ -1,4 +1,5 @@
 #!/bin/bash 
+# Disk space via df & parsing
 
 write_info() {
   local name=$1; shift;
