@@ -1,4 +1,4 @@
-# Bash System Info 
+# Linux Sysinfo 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5a3b5bbe370e409a96a0de70b1c95c31)](https://www.codacy.com/app/marshki/bash_sys_info?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=marshki/bash_sys_info&amp;utm_campaign=Badge_Grade)
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hyperium/hyper/master/LICENSE)
 
@@ -19,22 +19,23 @@ Ubuntu 18.04     | N
 
 # Getting Started 
 
-First, see: [REQUIREMENTS.md](https://github.com/marshki/bash_sys_info/blob/master/REQUIREMENTS.md)
+First, see: [REQUIREMENTS.md](https://github.com/marshki/linux_sysinfo/blob/master/REQUIREMENTS.md)
 
 Then, for the whole enchillada run as `root`: 
 
-`bash system_info.sh`. 
+`bash linux_sysinfo.sh`. 
 
 which will present a text-based menu from which you can make a selection and receive output:
  
 Debian 8     | Debian 8 pi 
 ----------   | -----------
-![Alt text](https://github.com/marshki/bash_sys_info/blob/master/docs/screen_grab.png "Deb_think") | ![Alt text](https://github.com/marshki/bash_sys_info/blob/master/docs/screen_grab_2.png "Deb_pi")
+![Alt text](https://github.com/marshki/linux_sysinfo/blob/master/docs/screen_grab.png "Deb_think") | ![Alt text](https://github.com/marshki/linux_sysinfo/blob/master/docs/screen_grab_2.png "Deb_pi")
  
 # TODO
 
 [ ] Test on: Fedora 26 & 27, Ubuntu 18.04.   
 [ ] `last` command needs to be paired for compatibility 
+[ ] Need to refactor this program in its entirety
 
 # History 
 
