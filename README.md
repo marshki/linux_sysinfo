@@ -35,11 +35,11 @@ Debian 8     | Debian 8 pi
  
 # TODO
 
-[ ] Test on: Fedora 26 & 27, Ubuntu 18.04.   
+- [ ] Test on: Fedora 26 & 27, Ubuntu 18.04.   
 
-[ ] Refactor program 
+- [ ] Refactor program 
 
-[ ] Unit testing 
+- [ ] Unit testing 
 
 # History 
 
