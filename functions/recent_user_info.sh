@@ -14,8 +14,9 @@ write_header() {
 ten_last() { 
   # `last` built-in; last 10 incl. host & dns 
 
-  #--> local lasty=$(last --limit 10 --hostlast --dns) <-- verbose 
   local lasty=$(last -n 10 -a -d)  
+  ### verbose version for some versions of `last` --> (last --limit 10 --hostlast --dns) ### 
+  
   printf "%s\\n" "${lasty}"   
 } 
 
