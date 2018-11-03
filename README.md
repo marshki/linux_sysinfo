@@ -45,7 +45,7 @@ then set the executable bit on the file:
 
 and call it with: 
 
-sysinfo .   
+`sysinfo`.   
 
  
  
