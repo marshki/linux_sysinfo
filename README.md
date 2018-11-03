@@ -32,6 +32,22 @@ which will present a text-based menu from which you can make a selection and rec
 Debian 8     | Debian 8 pi 
 ----------   | -----------
 ![Alt text](https://github.com/marshki/linux_sysinfo/blob/master/docs/screen_grab.png "Deb_think") | ![Alt text](https://github.com/marshki/linux_sysinfo/blob/master/docs/screen_grab_2.png "Deb_pi")
+
+**For sysadmins:**
+
+Make this script accessible to all users by placing it in: `/`, and then create a symbolic link for it: 
+
+`ln -s /linux_sysinfo.sh /usr/bin/sysinfo', 
+
+then set the executable bit on the file: 
+
+`chmod +x /linux_sysinfo.sh`, 
+
+and call it with: 
+
+sysinfo .   
+
+ 
  
 # TODO
 
