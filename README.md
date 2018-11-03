@@ -23,7 +23,10 @@ Ubuntu 18.04     | N
 
 First, see: [REQUIREMENTS.md](https://github.com/marshki/linux_sysinfo/blob/master/REQUIREMENTS.md). 
 
-Then, for the whole enchillada run as `root`: `bash linux_sysinfo.sh`,  
+Then, for the whole enchillada run as `root`: 
+
+`bash linux_sysinfo.sh`,  
+
 which will present a text-based menu from which you can make a selection and receive output:
  
 Debian 8     | Debian 8 pi 
@@ -32,9 +35,19 @@ Debian 8     | Debian 8 pi
 
 **For sysadmins:**
 
-Make this script accessible to all users by placing it in: `/`; create a symbolic link for it: 
-`ln -s /linux_sysinfo.sh /usr/bin/sysinfo`; set the executable bit on the file: `chmod +x /linux_sysinfo.sh`;   
-then call it:`sysinfo`.  
+Make this script accessible to all users by placing it in: `/`; 
+
+create a symbolic link for it: 
+
+`ln -s /linux_sysinfo.sh /usr/bin/sysinfo`; 
+
+set the executable bit on the file:
+
+`chmod +x /linux_sysinfo.sh`;   
+
+then call it:
+
+`sysinfo`.  
  
 # TODO
 
