@@ -37,7 +37,7 @@ Debian 8     | Debian 8 pi
 
 Make this script accessible to all users by placing it in: `/`, and then create a symbolic link for it: 
 
-`ln -s /linux_sysinfo.sh /usr/bin/sysinfo', 
+`ln -s /linux_sysinfo.sh /usr/bin/sysinfo`, 
 
 then set the executable bit on the file: 
 
