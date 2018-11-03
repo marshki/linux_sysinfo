@@ -261,7 +261,7 @@ current_users() {
 ten_last() { 
   # `last` built-in; last 10 incl. host & dns 
 
-  local lasty=$(last --limit 10 --hostlast --dns)  
+  local lasty=$(last -n 10 -a -d)  
   printf "%s\\n" "${lasty}"   
 } 
 
