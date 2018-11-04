@@ -51,6 +51,8 @@ then call it:
  
 # TODO
 
+- [ ] Optimize `file_hogs` & `dir_hogs` for seek time   
+
 - [ ] Test on: Fedora 26 & 27, Ubuntu 18.04.   
 
 - [ ] Refactor program 
