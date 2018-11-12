@@ -24,9 +24,9 @@ Ubuntu 18.04     | N
 
 First, see: [REQUIREMENTS.md](https://github.com/marshki/linux_sysinfo/blob/master/REQUIREMENTS.md). 
 
-Then, for the whole enchillada run as `root`: 
+Then, for the whole enchillada, run: 
 
-`bash linux_sysinfo.sh`,  
+`sudo bash linux_sysinfo.sh`,  
 
 which will present a text-based menu from which you can make a selection and receive output:
  
@@ -56,7 +56,7 @@ then call it:
 
 - [ ] Test on: Fedora 26 & 27, Ubuntu 18.04.   
 
-- [ ] Refactor program 
+- [ ] Refactor program paying attention to [ShellCheck](https://www.shellcheck.net)
 
 - [ ] Unit testing 
 
