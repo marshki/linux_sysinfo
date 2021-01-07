@@ -6,7 +6,7 @@
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hyperium/hyper/master/LICENSE)
 [![Open Source Love svg3](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
-Bash script extracts useful information from a `Linux` host using a menu-driven interface.
+Bash script extracts useful information from a `GNU/Linux` host using a menu-driven interface.
 This script builds upon *grabsysinfo.sh* attributed to Vivek Gite circa 2007.09.12.
 
 Test status: 
@@ -19,7 +19,7 @@ Debian 9         | Y
 Fedora 26        | N
 Fedora 27        | N
 Ubuntu 16.04     | Y 
-Ubuntu 18.04     | N
+Ubuntu 18.04     | Y
 
 # Getting Started 
 
@@ -55,11 +55,13 @@ then call it:
 
 - [ ] Optimize `file_hogs` & `dir_hogs` for seek time   
 
-- [ ] Test on: Fedora 26 & 27, Ubuntu 18.04.   
+- [X] Test on: Fedora 26 & 27, Ubuntu 18.04.   
 
 - [ ] Refactor program paying attention to [ShellCheck](https://www.shellcheck.net)
 
-- [ ] Unit testing 
+- [ ] Bash style guide. 
+
+- [ ] Automated unit testing? 
 
 # History 
 
