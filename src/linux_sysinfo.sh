@@ -1,15 +1,18 @@
+
 #!/usr/bin/env bash 
-# v.2.0 
-# mjk 2018.08.07
+#
+# linux_sysinfo v.2.0 
+#
+# GNU/Linux system information.
+#
+# Author: M. Krinitz <mjk235 [at] nyu [dot] edu> 
+# Date: 2018.08.07
+# License: MIT
+#
+# This script builds on, and improves grabsysinfo.sh 
+# attributed to Vivek Gite circa 2007.09.12.         
 
-#### Bash script to extract useful info from a Linux box ####
-#### Tested to run on the following distros:             ####
-#### Ubuntu 16.04 LTS "Xenial Xerus"                     #### 
-
-#### This script builds on, and improves grabsysinfo.sh ####
-#### attributed to Vivek Gite circa 2007.09.12.         ####
-
-#### PRELIMS ####
+# PRELIMS #
 
 function pv_check(){
   # `pv` is used in `disk_hogs` for progress bar 
@@ -23,7 +26,7 @@ function pv_check(){
 fi 
 } 
 
-#### HEADERS #### 
+# HEADERS # 
 
 write_header() {
   # print header 
@@ -41,7 +44,7 @@ write_info() {
   printf "%s\\n" "$@"
 }
 
-#### MENU ####
+# MENU #
 
 show_menu() { 
   # display on-screen menu 
@@ -94,9 +97,9 @@ pause() {
   read -p "$message" readEnterKey            
 }
 
-#### SYS INFO ####
+# SYS INFO #
 
-#### OS INFO  ####
+# OS INFO  #
 # kernel and operating system info
 
 kernel_name() {
@@ -138,7 +141,7 @@ os_info() {
   pause
 } 
 
-#### HOST INFO ####
+# HOST INFO #
 # host & DNS info 
 
 host_name() { 
@@ -184,7 +187,7 @@ host_info() {
   pause
 } 
 
-#### NET INFO ####
+# NET INFO #
 # network interfaces and routing 
 
 network_interfaces() { 
@@ -235,7 +238,7 @@ net_info() {
   pause 
 } 
 
-#### CURRENT USERS ####
+# CURRENT USERS #
 # logged in users 
 
 who_is_on() { 
@@ -255,7 +258,7 @@ current_users() {
   pause 
 } 
 
-#### RECENT USERS ####
+# RECENT USERS #
 # list of recent logins 
 
 ten_last() { 
@@ -311,7 +314,7 @@ cpu_info() {
   pause 
 } 
 
-#### MEM INFO ####
+# MEM INFO #
 # used and free memory  
 
 ram_stats() {
@@ -354,7 +357,7 @@ mem_info() {
   pause 
 }
 
-#### DISK INFO  #### 
+# DISK INFO  # 
 # info on free & used disk space 
 # NOTE: this script was designed to run w/out eleveated privilieges,  
 # BUT: if run-as a non-admin user, the results from `disk hogs`
@@ -408,7 +411,7 @@ disk_space() {
   pause 
 }
 
-#### Main #### 
+# Main # 
 
 pv_check 
 while true 
