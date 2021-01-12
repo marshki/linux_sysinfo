@@ -1,4 +1,3 @@
-
 #!/usr/bin/env bash 
 #
 # linux_sysinfo v.2.0 
@@ -278,7 +277,7 @@ recent_users() {
   pause 
 } 
 
-### CPU INFO
+# CPU INFO
 # info about CPU
 
 cpu_model() {
